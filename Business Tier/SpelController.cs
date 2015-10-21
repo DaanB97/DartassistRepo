@@ -44,19 +44,22 @@ namespace Business_Tier
                 {
                     if (score <= 180)
                     {
-                        if (s.Scorep1 >= score)
+                        if (s.Scorep1 > score)
                         {
-                            // > niks aan de hand, = leg is afgelopen.
                             s.Scorep1 = s.Scorep1 - score;
+                        }
+                        else if (s.Scorep1 == score)
+                        {
+                            //leg is afgelopen.
                         }
                         else
                         {
-                            // melding geven, kapot gegooid.
+                            //melding geven, kapot gegooid.
                         }
                     }
                     else
                     {
-                        // melding geven dat 180 max is.
+                        //melding geven dat 180 max is.
                     }
 
                 }
@@ -64,19 +67,22 @@ namespace Business_Tier
                 {
                     if (score <= 180)
                     {
-                        if (s.Scorep1 >= score)
+                        if (s.Scorep1 > score)
                         {
-                            // > niks aan de hand, = leg is afgelopen.
                             s.Scorep2 = s.Scorep2 - score;
+                        }
+                        else if (s.Scorep2 == score)
+                        {
+                            //leg is afgelopen.
                         }
                         else
                         {
-                            // melding geven, kapot gegooid.
+                            //melding geven, kapot gegooid.
                         }
                     }
                     else
                     {
-                        // melding geven dat 180 max is.
+                        //melding geven dat 180 max is.
                     }
                 }
             }
