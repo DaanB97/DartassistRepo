@@ -12,8 +12,8 @@ namespace Business_Tier
         public List<Legs> legs = new List<Legs>();
         public bool NieuwSpel(string speler1, string speler2, int score1, int score2)
         {
-            Spel s = new Spel(speler1, speler2, score1, score2);
-            Legs l = new Legs(speler1, speler2, score1, score2, 0, 0);
+            Spel s = new Spel(speler1, speler2, score1, score2, 0, 0);
+            Legs l = new Legs(speler1, speler2, score1, score2, 0, 0, 0, 0);
             spellen.Add(s);
             legs.Add(l);
             return true;
@@ -34,9 +34,33 @@ namespace Business_Tier
 
         }
 
-        public void Login()
+        public void GemiddeldePerLeg(string naam, int score)
         {
-
+            foreach (Spel s in spellen)
+            {
+                if (s.Speler1 == naam)
+                {
+                    if(s.Gmd1 == 0)
+                    {
+                        s.Gmd1 = score;
+                    }
+                    else
+                    {
+                        s.Gmd1 = (s.Gmd1 + score) / 2;
+                    }
+                }
+                else if (s.Speler2 == naam)
+                {
+                    if (s.Gmd2 == 0)
+                    {
+                        s.Gmd2 = score;
+                    }
+                    else
+                    {
+                        s.Gmd2 = (s.Gmd2 + score) / 2;
+                    }
+                }
+            }
         }
 
         public void ScoreInvoer(int score, string naam)
@@ -50,6 +74,7 @@ namespace Business_Tier
                         if (s.Scorep1 > score)
                         {
                             s.Scorep1 = s.Scorep1 - score;
+                            GemiddeldePerLeg(naam, score);
                         }
                         else if (s.Scorep1 == score)
                         {
@@ -59,6 +84,7 @@ namespace Business_Tier
                                 {
                                     l.Stand1 = l.Stand1 + 1; // Legs is gewonnen wanneer score gelijk is aan worp.
                                     ResetLeg(); // score weer terug zetten naar origineel.
+                                    ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.
                                 }
                             }
                         }
@@ -80,6 +106,7 @@ namespace Business_Tier
                         if (s.Scorep2 > score)
                         {
                             s.Scorep2 = s.Scorep2 - score;
+                            GemiddeldePerLeg(naam, score);
                         }
                         else if (s.Scorep2 == score)
                         {
@@ -89,6 +116,7 @@ namespace Business_Tier
                                 {
                                     l.Stand2 = l.Stand2 + 1; // Legs is gewonnen wanneer score gelijk is aan worp.
                                     ResetLeg(); // score weer terug zetten naar origineel.
+                                    ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.
                                 }
                             }
                         }
@@ -1172,6 +1200,15 @@ namespace Business_Tier
             {
                 s.Scorep1 = 501;
                 s.Scorep2 = 501;
+            }
+        }
+
+        public void ResetGmd()
+        {
+            foreach (Spel s in spellen)
+            {
+                s.Gmd1 = 0;
+                s.Gmd2 = 0;
             }
         }
         public void BotniveauInstellen()

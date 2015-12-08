@@ -62,6 +62,7 @@ namespace DartAssist
             else
             {
                 int invoer1 = Convert.ToInt32(tbInvoer1.Text);
+                lblLaatsteScore1.Text = Convert.ToString(invoer1);
                 string naam1 = lblNaamP1.Text;
                 string naam2 = lblNaamP2.Text;
                 spelController.ScoreInvoer(invoer1, naam1);
@@ -72,6 +73,7 @@ namespace DartAssist
                     {
                         lblScore1.Text = Convert.ToString(s.Scorep1);
                         lblScore2.Text = Convert.ToString(s.Scorep2);
+                        lblGemiddelde1.Text = Convert.ToString(s.Gmd1);
                     }
                 }
                 tbInvoer1.Text = "";
@@ -91,18 +93,18 @@ namespace DartAssist
             else
             {
                 int invoer2 = Convert.ToInt32(tbInvoer2.Text);
+                lblLaatsteScore2.Text = Convert.ToString(invoer2);
                 string naam1 = lblNaamP1.Text;
                 string naam2 = lblNaamP2.Text;
                 spelController.ScoreInvoer(invoer2, naam2);
-                int nieuwscore;
 
                 foreach (Spel s in spelController.spellen)
                 {
                     if (naam2 == s.Speler2)
                     {
-                        nieuwscore = s.Scorep2;
                         lblScore1.Text = Convert.ToString(s.Scorep1);
-                        lblScore2.Text = Convert.ToString(nieuwscore);
+                        lblScore2.Text = Convert.ToString(s.Scorep2);
+                        lblGemiddelde2.Text = Convert.ToString(s.Gmd2);
                     }
                 }
                 tbInvoer2.Text = "";
