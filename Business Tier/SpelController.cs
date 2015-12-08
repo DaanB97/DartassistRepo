@@ -9,10 +9,13 @@ namespace Business_Tier
     public class SpelController
     {
         public List<Spel> spellen = new List<Spel>();
+        public List<Legs> legs = new List<Legs>();
         public bool NieuwSpel(string speler1, string speler2, int score1, int score2)
         {
             Spel s = new Spel(speler1, speler2, score1, score2);
+            Legs l = new Legs(speler1, speler2, score1, score2, 0, 0);
             spellen.Add(s);
+            legs.Add(l);
             return true;
         }
 
@@ -50,7 +53,14 @@ namespace Business_Tier
                         }
                         else if (s.Scorep1 == score)
                         {
-                            //leg is afgelopen.
+                            foreach(Legs l in legs)
+                            {
+                                if(l.Speler1 == naam)
+                                {
+                                    l.Stand1 = l.Stand1 + 1; // Legs is gewonnen wanneer score gelijk is aan worp.
+                                    ResetLeg(); // score weer terug zetten naar origineel.
+                                }
+                            }
                         }
                         else
                         {
@@ -67,13 +77,20 @@ namespace Business_Tier
                 {
                     if (score <= 180)
                     {
-                        if (s.Scorep1 > score)
+                        if (s.Scorep2 > score)
                         {
                             s.Scorep2 = s.Scorep2 - score;
                         }
                         else if (s.Scorep2 == score)
                         {
-                            //leg is afgelopen.
+                            foreach (Legs l in legs)
+                            {
+                                if (l.Speler2 == naam)
+                                {
+                                    l.Stand2 = l.Stand2 + 1; // Legs is gewonnen wanneer score gelijk is aan worp.
+                                    ResetLeg(); // score weer terug zetten naar origineel.
+                                }
+                            }
                         }
                         else
                         {
@@ -1149,6 +1166,14 @@ namespace Business_Tier
             return uitworp;
         }
 
+        public void ResetLeg()
+        {
+            foreach (Spel s in spellen)
+            {
+                s.Scorep1 = 501;
+                s.Scorep2 = 501;
+            }
+        }
         public void BotniveauInstellen()
         {
 

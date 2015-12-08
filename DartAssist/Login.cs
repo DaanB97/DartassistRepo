@@ -13,16 +13,19 @@ namespace DartAssist
 {
     public partial class Login : Form
     {
+        //private Login login;
         private Instellingen instellingen;
         public Login()
         {
             InitializeComponent();
+            //login = new Login();
             instellingen = new Instellingen();
         }
 
         private void btnGast_Click(object sender, EventArgs e)
         {
             instellingen.Show();
+            //login.Close();
         }
     }
 }

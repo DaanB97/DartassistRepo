@@ -55,6 +55,10 @@
             this.lblLaatsteScore2 = new System.Windows.Forms.Label();
             this.lblGemiddelde2 = new System.Windows.Forms.Label();
             this.lblAantalDarts2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblLegs1 = new System.Windows.Forms.Label();
+            this.lblLegs2 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.gbSpeler1.SuspendLayout();
             this.gbSpeler2.SuspendLayout();
             this.SuspendLayout();
@@ -321,11 +325,51 @@
             this.lblAantalDarts2.TabIndex = 20;
             this.lblAantalDarts2.Text = "0";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(281, 113);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Legs :";
+            // 
+            // lblLegs1
+            // 
+            this.lblLegs1.AutoSize = true;
+            this.lblLegs1.Location = new System.Drawing.Point(291, 138);
+            this.lblLegs1.Name = "lblLegs1";
+            this.lblLegs1.Size = new System.Drawing.Size(13, 13);
+            this.lblLegs1.TabIndex = 22;
+            this.lblLegs1.Text = "0";
+            // 
+            // lblLegs2
+            // 
+            this.lblLegs2.AutoSize = true;
+            this.lblLegs2.Location = new System.Drawing.Point(368, 138);
+            this.lblLegs2.Name = "lblLegs2";
+            this.lblLegs2.Size = new System.Drawing.Size(13, 13);
+            this.lblLegs2.TabIndex = 23;
+            this.lblLegs2.Text = "0";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(358, 113);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(36, 13);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Legs :";
+            // 
             // DartAssist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 388);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblLegs2);
+            this.Controls.Add(this.lblLegs1);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.lblAantalDarts2);
             this.Controls.Add(this.lblGemiddelde2);
             this.Controls.Add(this.lblLaatsteScore2);
@@ -385,5 +429,9 @@
         private System.Windows.Forms.Label lblAantalDarts2;
         private System.Windows.Forms.Label lblNaamP1;
         private System.Windows.Forms.Label lblNaamP2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblLegs1;
+        private System.Windows.Forms.Label lblLegs2;
+        private System.Windows.Forms.Label label11;
     }
 }
