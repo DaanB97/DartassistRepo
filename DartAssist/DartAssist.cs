@@ -16,7 +16,7 @@ namespace DartAssist
         private SpelController spelController;
         public DartAssist()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             spelController = new SpelController();
         }
 
@@ -38,7 +38,7 @@ namespace DartAssist
 
         public void UpdateStand()
         {
-            foreach(Legs s in spelController.legs)
+            foreach (Legs s in spelController.legs)
             {
                 if (s.Speler1 == lblNaamP1.Text)
                 {
@@ -50,7 +50,7 @@ namespace DartAssist
 
         public void NieuwSpel(string speler1, string speler2, int score1, int score2)
         {
-            spelController.NieuwSpel( speler1,  speler2, score1, score2);
+            spelController.NieuwSpel(speler1, speler2, score1, score2);
         }
 
         private void btnInvoer1_Click(object sender, EventArgs e)
@@ -61,27 +61,14 @@ namespace DartAssist
             }
             else
             {
-                int invoer1 = Convert.ToInt32(tbInvoer1.Text);
-                lblLaatsteScore1.Text = Convert.ToString(invoer1);
                 string naam1 = lblNaamP1.Text;
-                string naam2 = lblNaamP2.Text;
+                int invoer1 = Convert.ToInt32(tbInvoer1.Text);
                 spelController.ScoreInvoer(invoer1, naam1);
-
-                foreach (Spel s in spelController.spellen)
-                {
-                    if (naam1 == s.Speler1)
-                    {
-                        lblScore1.Text = Convert.ToString(s.Scorep1);
-                        lblScore2.Text = Convert.ToString(s.Scorep2);
-                        lblGemiddelde1.Text = Convert.ToString(s.Gmd1);
-                    }
-                }
+                FillLabels();
                 tbInvoer1.Text = "";
-                lblUitworp1.Text = spelController.UitworpTonen(naam1);
-                lblUitworp2.Text = spelController.UitworpTonen(naam2);
+                lblLaatsteScore1.Text = Convert.ToString(invoer1);
             }
             UpdateStand();
-
         }
 
         private void btnInvoer2_Click(object sender, EventArgs e)
@@ -92,26 +79,29 @@ namespace DartAssist
             }
             else
             {
-                int invoer2 = Convert.ToInt32(tbInvoer2.Text);
-                lblLaatsteScore2.Text = Convert.ToString(invoer2);
-                string naam1 = lblNaamP1.Text;
                 string naam2 = lblNaamP2.Text;
+                int invoer2 = Convert.ToInt32(tbInvoer2.Text);
                 spelController.ScoreInvoer(invoer2, naam2);
-
-                foreach (Spel s in spelController.spellen)
-                {
-                    if (naam2 == s.Speler2)
-                    {
-                        lblScore1.Text = Convert.ToString(s.Scorep1);
-                        lblScore2.Text = Convert.ToString(s.Scorep2);
-                        lblGemiddelde2.Text = Convert.ToString(s.Gmd2);
-                    }
-                }
+                FillLabels();
                 tbInvoer2.Text = "";
-                lblUitworp1.Text = spelController.UitworpTonen(naam1);
-                lblUitworp2.Text = spelController.UitworpTonen(naam2);
+                lblLaatsteScore2.Text = Convert.ToString(invoer2);
             }
             UpdateStand();
+        }
+
+        private void FillLabels()
+        {
+            string naam1 = lblNaamP1.Text;
+            string naam2 = lblNaamP2.Text;
+            foreach (Spel s in spelController.spellen)
+            {
+                lblScore1.Text = Convert.ToString(s.Scorep1);
+                lblScore2.Text = Convert.ToString(s.Scorep2);
+                lblGemiddelde1.Text = Convert.ToString(s.Gmd1);
+                lblGemiddelde2.Text = Convert.ToString(s.Gmd2);
+            }
+            lblUitworp1.Text = spelController.UitworpTonen(naam1);
+            lblUitworp2.Text = spelController.UitworpTonen(naam2);
         }
     }
 }

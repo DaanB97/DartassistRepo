@@ -8,6 +8,11 @@ namespace Business_Tier
 {
     public class SpelController
     {
+        private int counter1 = 2;
+        private int counter2 = 2;
+        private int score1;
+        private int score2;
+
         public List<Spel> spellen = new List<Spel>();
         public List<Legs> legs = new List<Legs>();
         public bool NieuwSpel(string speler1, string speler2, int score1, int score2)
@@ -38,15 +43,19 @@ namespace Business_Tier
         {
             foreach (Spel s in spellen)
             {
+
                 if (s.Speler1 == naam)
                 {
                     if(s.Gmd1 == 0)
                     {
                         s.Gmd1 = score;
+                        score1 = score;
                     }
                     else
                     {
-                        s.Gmd1 = (s.Gmd1 + score) / 2;
+                        score1 = score1 + score;
+                        s.Gmd1 = score1 / counter1;
+                        counter1++;
                     }
                 }
                 else if (s.Speler2 == naam)
@@ -54,10 +63,13 @@ namespace Business_Tier
                     if (s.Gmd2 == 0)
                     {
                         s.Gmd2 = score;
+                        score2 = score;
                     }
                     else
                     {
-                        s.Gmd2 = (s.Gmd2 + score) / 2;
+                        score2 = score2 + score;
+                        s.Gmd2 = score2 / counter2;
+                        counter2++;
                     }
                 }
             }
@@ -1209,6 +1221,10 @@ namespace Business_Tier
             {
                 s.Gmd1 = 0;
                 s.Gmd2 = 0;
+                counter1 = 2;
+                counter2 = 2;
+                score1 = 0;
+                score2 = 0;
             }
         }
         public void BotniveauInstellen()
