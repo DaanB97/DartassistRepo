@@ -19,9 +19,9 @@ namespace Business_Tier
         public List<Sets> sets = new List<Sets>();
         public bool NieuwSpel(string speler1, string speler2, int score1, int score2, int startScore, int legsTotaal, int setsTotaal)
         {
-            Spel s = new Spel(speler1, speler2, score1, score2, 0, 0, startScore);
-            Legs l = new Legs(speler1, speler2, score1, score2, 0, 0, startScore, 0, 0, legsTotaal);
-            Sets set = new Sets(speler1, speler2, score1, score2, 0, 0, startScore, 0, 0, setsTotaal);
+            Spel s = new Spel(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore);
+            Legs l = new Legs(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore, 0, 0, legsTotaal);
+            Sets set = new Sets(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore, 0, 0, setsTotaal);
             spellen.Add(s);
             legs.Add(l);
             sets.Add(set);
@@ -95,9 +95,11 @@ namespace Business_Tier
                         {
                             s.Scorep1 = s.Scorep1 - score;
                             GemiddeldePerLeg(naam, score);
+                            s.Count1 = s.Count1 + 3;
                         }
                         else if (s.Scorep1 == score)
                         {
+                            s.Count1 = s.Count1 + 0; //pop-up geven waar gebruiker aantal darts in moet geven.
                             foreach (Legs l in legs)
                             {
                                 if (l.Speler1 == naam)
@@ -105,8 +107,7 @@ namespace Business_Tier
                                     l.Stand1 = l.Stand1 + 1; // Leg is gewonnen wanneer score gelijk is aan worp.
                                     if (l.Stand1 == l.LegsTotaal)
                                     {
-                                        ResetLeg(); // zet score weer terug zetten naar origineel.
-                                        ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.
+                                        Reset(); //Alle spelgegevens terug zetten naar orrigineel.
 
                                         foreach (Sets set in sets)
                                         {
@@ -114,7 +115,7 @@ namespace Business_Tier
                                             {
                                                 set.SetsStand1 = set.SetsStand1 + 1; // Set is gewonnen
 
-                                                if(set.SetsStand1 == set.SetsTotaal)
+                                                if (set.SetsStand1 == set.SetsTotaal)
                                                 {
                                                     // Einde spel.
                                                 }
@@ -125,8 +126,7 @@ namespace Business_Tier
                                             }
                                         }
                                     }
-                                    ResetLeg(); // zet score weer terug zetten naar origineel.
-                                    ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.
+                                    Reset(); //Alle spelgegevens terug zetten naar orrigineel.
                                 }
                             }
                         }
@@ -149,9 +149,11 @@ namespace Business_Tier
                         {
                             s.Scorep2 = s.Scorep2 - score;
                             GemiddeldePerLeg(naam, score);
+                            s.Count2 = s.Count2 + 3;
                         }
                         else if (s.Scorep2 == score)
                         {
+                            s.Count2 = s.Count2 + 0; //pop-up geven waar gebruiker aantal darts in moet geven.
                             foreach (Legs l in legs)
                             {
                                 if (l.Speler2 == naam)
@@ -159,8 +161,7 @@ namespace Business_Tier
                                     l.Stand2 = l.Stand2 + 1; // Legs is gewonnen wanneer score gelijk is aan worp.
                                     if (l.Stand1 == l.LegsTotaal)
                                     {
-                                        ResetLeg(); // zet score weer terug zetten naar origineel.
-                                        ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.
+                                        Reset(); //Alle spelgegevens terug zetten naar orrigineel.
 
                                         foreach (Sets set in sets)
                                         {
@@ -179,8 +180,7 @@ namespace Business_Tier
                                             }
                                         }
                                     }
-                                    ResetLeg(); // score weer terug zetten naar origineel.
-                                    ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.
+                                    Reset(); //Alle spelgegevens terug zetten naar orrigineel.
                                 }
                             }
                         }
@@ -1258,27 +1258,23 @@ namespace Business_Tier
             return uitworp;
         }
 
-        public void ResetLeg()
+        public void Reset()
         {
             foreach (Spel s in spellen)
             {
                 s.Scorep1 = s.Startscore;
                 s.Scorep2 = s.Startscore;
-            }
-        }
-
-        public void ResetGmd()
-        {
-            foreach (Spel s in spellen)
-            {
                 s.Gmd1 = 0;
                 s.Gmd2 = 0;
+                s.Count1 = 0;
+                s.Count2 = 0;
                 counter1 = 2;
                 counter2 = 2;
                 score1 = 0;
                 score2 = 0;
             }
         }
+
         public void BotniveauInstellen()
         {
 

@@ -107,6 +107,8 @@ namespace DartAssist
                 lblScore2.Text = Convert.ToString(s.Scorep2);
                 lblGemiddelde1.Text = Convert.ToString(s.Gmd1);
                 lblGemiddelde2.Text = Convert.ToString(s.Gmd2);
+                lblAantalDarts1.Text = Convert.ToString(s.Count1);
+                lblAantalDarts2.Text = Convert.ToString(s.Count2);            
             }
             lblUitworp1.Text = spelController.UitworpTonen(naam1);
             lblUitworp2.Text = spelController.UitworpTonen(naam2);

@@ -36,7 +36,7 @@
             this.rb301P1 = new System.Windows.Forms.RadioButton();
             this.rb501P1 = new System.Windows.Forms.RadioButton();
             this.rb701P1 = new System.Windows.Forms.RadioButton();
-            this.gbScore = new System.Windows.Forms.GroupBox();
+            this.gbSpelsoort = new System.Windows.Forms.GroupBox();
             this.gbBot = new System.Windows.Forms.GroupBox();
             this.gbSpel = new System.Windows.Forms.GroupBox();
             this.lblSpelLegs = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@
             this.nudSets = new System.Windows.Forms.NumericUpDown();
             this.rbCostum = new System.Windows.Forms.RadioButton();
             this.tbCostum = new System.Windows.Forms.TextBox();
-            this.gbScore.SuspendLayout();
+            this.gbSpelsoort.SuspendLayout();
             this.gbSpel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLegs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSets)).BeginInit();
@@ -130,19 +130,19 @@
             this.rb701P1.Text = "701";
             this.rb701P1.UseVisualStyleBackColor = true;
             // 
-            // gbScore
+            // gbSpelsoort
             // 
-            this.gbScore.Controls.Add(this.tbCostum);
-            this.gbScore.Controls.Add(this.rbCostum);
-            this.gbScore.Controls.Add(this.rb301P1);
-            this.gbScore.Controls.Add(this.rb701P1);
-            this.gbScore.Controls.Add(this.rb501P1);
-            this.gbScore.Location = new System.Drawing.Point(27, 83);
-            this.gbScore.Name = "gbScore";
-            this.gbScore.Size = new System.Drawing.Size(146, 133);
-            this.gbScore.TabIndex = 8;
-            this.gbScore.TabStop = false;
-            this.gbScore.Text = "Score";
+            this.gbSpelsoort.Controls.Add(this.tbCostum);
+            this.gbSpelsoort.Controls.Add(this.rbCostum);
+            this.gbSpelsoort.Controls.Add(this.rb301P1);
+            this.gbSpelsoort.Controls.Add(this.rb701P1);
+            this.gbSpelsoort.Controls.Add(this.rb501P1);
+            this.gbSpelsoort.Location = new System.Drawing.Point(27, 83);
+            this.gbSpelsoort.Name = "gbSpelsoort";
+            this.gbSpelsoort.Size = new System.Drawing.Size(146, 133);
+            this.gbSpelsoort.TabIndex = 8;
+            this.gbSpelsoort.TabStop = false;
+            this.gbSpelsoort.Text = "Spelsoort";
             // 
             // gbBot
             // 
@@ -223,7 +223,7 @@
             this.ClientSize = new System.Drawing.Size(439, 348);
             this.Controls.Add(this.gbSpel);
             this.Controls.Add(this.gbBot);
-            this.Controls.Add(this.gbScore);
+            this.Controls.Add(this.gbSpelsoort);
             this.Controls.Add(this.btnBeginSpel);
             this.Controls.Add(this.tbSpeler2);
             this.Controls.Add(this.tbSpeler1);
@@ -231,8 +231,8 @@
             this.Controls.Add(this.label1);
             this.Name = "Instellingen";
             this.Text = "Instellingen";
-            this.gbScore.ResumeLayout(false);
-            this.gbScore.PerformLayout();
+            this.gbSpelsoort.ResumeLayout(false);
+            this.gbSpelsoort.PerformLayout();
             this.gbSpel.ResumeLayout(false);
             this.gbSpel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLegs)).EndInit();
@@ -252,7 +252,7 @@
         private System.Windows.Forms.RadioButton rb301P1;
         private System.Windows.Forms.RadioButton rb501P1;
         private System.Windows.Forms.RadioButton rb701P1;
-        private System.Windows.Forms.GroupBox gbScore;
+        private System.Windows.Forms.GroupBox gbSpelsoort;
         private System.Windows.Forms.TextBox tbCostum;
         private System.Windows.Forms.RadioButton rbCostum;
         private System.Windows.Forms.GroupBox gbBot;
