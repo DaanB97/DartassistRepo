@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Business_Tier
 {
     public class SpelController
@@ -15,10 +16,10 @@ namespace Business_Tier
 
         public List<Spel> spellen = new List<Spel>();
         public List<Legs> legs = new List<Legs>();
-        public bool NieuwSpel(string speler1, string speler2, int score1, int score2)
+        public bool NieuwSpel(string speler1, string speler2, int score1, int score2, int startScore)
         {
-            Spel s = new Spel(speler1, speler2, score1, score2, 0, 0);
-            Legs l = new Legs(speler1, speler2, score1, score2, 0, 0, 0, 0);
+            Spel s = new Spel(speler1, speler2, score1, score2, 0, 0, startScore);
+            Legs l = new Legs(speler1, speler2, score1, score2, 0, 0, startScore, 0, 0);
             spellen.Add(s);
             legs.Add(l);
             return true;
@@ -46,7 +47,7 @@ namespace Business_Tier
 
                 if (s.Speler1 == naam)
                 {
-                    if(s.Gmd1 == 0)
+                    if (s.Gmd1 == 0)
                     {
                         s.Gmd1 = score;
                         score1 = score;
@@ -77,9 +78,9 @@ namespace Business_Tier
 
         public void ScoreInvoer(int score, string naam)
         {
-            foreach(Spel s in spellen)
+            foreach (Spel s in spellen)
             {
-                if(naam == s.Speler1)
+                if (naam == s.Speler1)
                 {
                     if (score <= 180)
                     {
@@ -90,12 +91,12 @@ namespace Business_Tier
                         }
                         else if (s.Scorep1 == score)
                         {
-                            foreach(Legs l in legs)
+                            foreach (Legs l in legs)
                             {
-                                if(l.Speler1 == naam)
+                                if (l.Speler1 == naam)
                                 {
                                     l.Stand1 = l.Stand1 + 1; // Legs is gewonnen wanneer score gelijk is aan worp.
-                                    ResetLeg(); // score weer terug zetten naar origineel.
+                                    ResetLeg(); // zet score weer terug zetten naar origineel.
                                     ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.
                                 }
                             }
@@ -107,11 +108,11 @@ namespace Business_Tier
                     }
                     else
                     {
-                        //melding geven dat 180 max is.
+                        //melding geven 180 is max
                     }
 
                 }
-                else if(naam == s.Speler2)
+                else if (naam == s.Speler2)
                 {
                     if (score <= 180)
                     {
@@ -1211,8 +1212,8 @@ namespace Business_Tier
         {
             foreach (Spel s in spellen)
             {
-                s.Scorep1 = 501;
-                s.Scorep2 = 501;
+                s.Scorep1 = s.Startscore;
+                s.Scorep2 = s.Startscore;
             }
         }
 
@@ -1238,5 +1239,5 @@ namespace Business_Tier
 
         }
     }
-    
+
 }

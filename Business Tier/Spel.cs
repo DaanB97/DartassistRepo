@@ -14,12 +14,13 @@ namespace Business_Tier
         public int Scorep2 { get; set; }
         public int Gmd1 { get; set; }
         public int Gmd2 { get; set; }
+        public int Startscore { get; set; }
 
         public Spel()
         {
 
         }
-        public Spel(string speler1, string speler2, int scoreP1, int scoreP2, int gmd1, int gmd2)
+        public Spel(string speler1, string speler2, int scoreP1, int scoreP2, int gmd1, int gmd2, int startscore)
         {
             this.Speler1 = speler1;
             this.Speler2 = speler2;
@@ -27,6 +28,7 @@ namespace Business_Tier
             this.Scorep2 = scoreP2;
             this.Gmd1 = gmd1;
             this.Gmd2 = gmd2;
+            this.Startscore = startscore;
         }
 
         public override string ToString()

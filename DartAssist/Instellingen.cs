@@ -14,6 +14,8 @@ namespace DartAssist
     public partial class Instellingen : Form
     {
         private DartAssist dartAssist;
+        private int score1;
+        private int score2;
 
         public Instellingen()
         {
@@ -21,16 +23,13 @@ namespace DartAssist
             dartAssist = new DartAssist();
         }
 
-        int score1;
-        int score2;
-
         public int StartOpties()
         {
             string speler1 = tbSpeler1.Text;
             string speler2 = tbSpeler2.Text;
             int i = CheckScores();
 
-            dartAssist.NieuwSpel(speler1,speler2,score1,score2);
+            dartAssist.NieuwSpel(speler1,speler2,score1,score2,score1);
             return i;
         }
 
