@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business_Tier
 {
-    class Sets : Spel
+    public class Sets : Spel
     {
         public int SetsStand1 { get; set; }
         public int SetsStand2 { get; set; }

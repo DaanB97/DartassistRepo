@@ -16,16 +16,22 @@ namespace Business_Tier
 
         public List<Spel> spellen = new List<Spel>();
         public List<Legs> legs = new List<Legs>();
+        public List<Sets> sets = new List<Sets>();
         public bool NieuwSpel(string speler1, string speler2, int score1, int score2, int startScore, int legsTotaal, int setsTotaal)
         {
             Spel s = new Spel(speler1, speler2, score1, score2, 0, 0, startScore);
             Legs l = new Legs(speler1, speler2, score1, score2, 0, 0, startScore, 0, 0, legsTotaal);
-            Sets s = new Sets(speler1, speler2, score1, score2, 0, 0, startScore, 0, 0, setsTotaal);
+            Sets set = new Sets(speler1, speler2, score1, score2, 0, 0, startScore, 0, 0, setsTotaal);
             spellen.Add(s);
             legs.Add(l);
+            sets.Add(set);
             return true;
         }
 
+        public void EindeSpel()
+        {
+
+        }
         public void GeefEindOverzicht()
         {
 
@@ -96,10 +102,28 @@ namespace Business_Tier
                             {
                                 if (l.Speler1 == naam)
                                 {
-                                    l.Stand1 = l.Stand1 + 1; // Legs is gewonnen wanneer score gelijk is aan worp.
+                                    l.Stand1 = l.Stand1 + 1; // Leg is gewonnen wanneer score gelijk is aan worp.
                                     if (l.Stand1 == l.LegsTotaal)
                                     {
-                                        //checken of er setspel is, zo nee einde spel zo ja set erbij
+                                        ResetLeg(); // zet score weer terug zetten naar origineel.
+                                        ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.
+
+                                        foreach (Sets set in sets)
+                                        {
+                                            if (set.SetsTotaal != 0)
+                                            {
+                                                set.SetsStand1 = set.SetsStand1 + 1; // Set is gewonnen
+
+                                                if(set.SetsStand1 == set.SetsTotaal)
+                                                {
+                                                    // Einde spel.
+                                                }
+                                            }
+                                            else
+                                            {
+                                                // Einde spel.
+                                            }
+                                        }
                                     }
                                     ResetLeg(); // zet score weer terug zetten naar origineel.
                                     ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.
@@ -135,7 +159,25 @@ namespace Business_Tier
                                     l.Stand2 = l.Stand2 + 1; // Legs is gewonnen wanneer score gelijk is aan worp.
                                     if (l.Stand1 == l.LegsTotaal)
                                     {
-                                        //checken of er setspel is, zo nee einde spel zo ja set erbij
+                                        ResetLeg(); // zet score weer terug zetten naar origineel.
+                                        ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.
+
+                                        foreach (Sets set in sets)
+                                        {
+                                            if (set.SetsTotaal != 0)
+                                            {
+                                                set.SetsStand1 = set.SetsStand1 + 1; // Set is 
+
+                                                if (set.SetsStand1 == set.SetsTotaal)
+                                                {
+                                                    // Einde spel.
+                                                }
+                                            }
+                                            else
+                                            {
+                                                // Einde spel.
+                                            }
+                                        }
                                     }
                                     ResetLeg(); // score weer terug zetten naar origineel.
                                     ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.

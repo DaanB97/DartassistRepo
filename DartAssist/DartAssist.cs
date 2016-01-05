@@ -46,6 +46,14 @@ namespace DartAssist
                     lblLegs2.Text = Convert.ToString(s.Stand2);
                 }
             }
+            foreach (Sets s in spelController.sets)
+            {
+                if(s.Speler1 == lblNaamP1.Text)
+                {
+                    lblSetsStand1.Text = Convert.ToString(s.SetsStand1);
+                    lblSetsStand2.Text = Convert.ToString(s.SetsStand2);
+                }
+            }
         }
 
         public void NieuwSpel(string speler1, string speler2, int score1, int score2, int startScore, int legsTotaal, int setsTotaal)

@@ -59,6 +59,10 @@
             this.lblLegs1 = new System.Windows.Forms.Label();
             this.lblLegs2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblSetsStand1 = new System.Windows.Forms.Label();
+            this.lblSetsStand2 = new System.Windows.Forms.Label();
             this.gbSpeler1.SuspendLayout();
             this.gbSpeler2.SuspendLayout();
             this.SuspendLayout();
@@ -328,7 +332,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(281, 113);
+            this.label8.Location = new System.Drawing.Point(280, 99);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 21;
@@ -337,7 +341,7 @@
             // lblLegs1
             // 
             this.lblLegs1.AutoSize = true;
-            this.lblLegs1.Location = new System.Drawing.Point(291, 138);
+            this.lblLegs1.Location = new System.Drawing.Point(280, 114);
             this.lblLegs1.Name = "lblLegs1";
             this.lblLegs1.Size = new System.Drawing.Size(13, 13);
             this.lblLegs1.TabIndex = 22;
@@ -346,7 +350,7 @@
             // lblLegs2
             // 
             this.lblLegs2.AutoSize = true;
-            this.lblLegs2.Location = new System.Drawing.Point(368, 138);
+            this.lblLegs2.Location = new System.Drawing.Point(363, 114);
             this.lblLegs2.Name = "lblLegs2";
             this.lblLegs2.Size = new System.Drawing.Size(13, 13);
             this.lblLegs2.TabIndex = 23;
@@ -355,17 +359,57 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(358, 113);
+            this.label11.Location = new System.Drawing.Point(363, 99);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 13);
             this.label11.TabIndex = 24;
             this.label11.Text = "Legs :";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(280, 127);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 13);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Sets :";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(363, 127);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 13);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "Sets :";
+            // 
+            // lblSetsStand1
+            // 
+            this.lblSetsStand1.AutoSize = true;
+            this.lblSetsStand1.Location = new System.Drawing.Point(283, 144);
+            this.lblSetsStand1.Name = "lblSetsStand1";
+            this.lblSetsStand1.Size = new System.Drawing.Size(13, 13);
+            this.lblSetsStand1.TabIndex = 27;
+            this.lblSetsStand1.Text = "0";
+            // 
+            // lblSetsStand2
+            // 
+            this.lblSetsStand2.AutoSize = true;
+            this.lblSetsStand2.Location = new System.Drawing.Point(363, 144);
+            this.lblSetsStand2.Name = "lblSetsStand2";
+            this.lblSetsStand2.Size = new System.Drawing.Size(13, 13);
+            this.lblSetsStand2.TabIndex = 28;
+            this.lblSetsStand2.Text = "0";
             // 
             // DartAssist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 388);
+            this.Controls.Add(this.lblSetsStand2);
+            this.Controls.Add(this.lblSetsStand1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.lblLegs2);
             this.Controls.Add(this.lblLegs1);
@@ -433,5 +477,9 @@
         private System.Windows.Forms.Label lblLegs1;
         private System.Windows.Forms.Label lblLegs2;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblSetsStand1;
+        private System.Windows.Forms.Label lblSetsStand2;
     }
 }
