@@ -29,7 +29,7 @@ namespace Business_Tier
 
         }
 
-        public void SlaStatistiekenOp()
+        public void SlaStatistiekenOp(string speler, int gmd, int hoogstescore, int hoogsteuitworp)
         {
 
         }
@@ -127,6 +127,7 @@ namespace Business_Tier
                                 if (l.Speler2 == naam)
                                 {
                                     l.Stand2 = l.Stand2 + 1; // Legs is gewonnen wanneer score gelijk is aan worp.
+                                    // checken of wedstrijd voorbij is. leg aantal bereikt.
                                     ResetLeg(); // score weer terug zetten naar origineel.
                                     ResetGmd(); // Zet gemiddelde per leg weer op 0 omdat er een nieuwe leg begint.
                                 }
