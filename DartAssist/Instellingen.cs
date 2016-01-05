@@ -62,6 +62,12 @@ namespace DartAssist
                 score2 = 701;
                 return 1;
             }
+            else if(rbCostum.Checked)
+            {
+                score1 = Convert.ToInt32(tbCostum.Text);
+                score2 = Convert.ToInt32(tbCostum.Text);
+                return 1;
+            }
             else
             {
                 MessageBox.Show("Kies spelsoort");

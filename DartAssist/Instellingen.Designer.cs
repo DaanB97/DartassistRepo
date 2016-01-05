@@ -36,6 +36,19 @@
             this.rb301P1 = new System.Windows.Forms.RadioButton();
             this.rb501P1 = new System.Windows.Forms.RadioButton();
             this.rb701P1 = new System.Windows.Forms.RadioButton();
+            this.gbScore = new System.Windows.Forms.GroupBox();
+            this.gbBot = new System.Windows.Forms.GroupBox();
+            this.gbSpel = new System.Windows.Forms.GroupBox();
+            this.lblSpelLegs = new System.Windows.Forms.Label();
+            this.lblSpelSets = new System.Windows.Forms.Label();
+            this.nudLegs = new System.Windows.Forms.NumericUpDown();
+            this.nudSets = new System.Windows.Forms.NumericUpDown();
+            this.rbCostum = new System.Windows.Forms.RadioButton();
+            this.tbCostum = new System.Windows.Forms.TextBox();
+            this.gbScore.SuspendLayout();
+            this.gbSpel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLegs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSets)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -76,7 +89,7 @@
             // 
             // btnBeginSpel
             // 
-            this.btnBeginSpel.Location = new System.Drawing.Point(167, 245);
+            this.btnBeginSpel.Location = new System.Drawing.Point(27, 301);
             this.btnBeginSpel.Name = "btnBeginSpel";
             this.btnBeginSpel.Size = new System.Drawing.Size(75, 23);
             this.btnBeginSpel.TabIndex = 4;
@@ -87,7 +100,7 @@
             // rb301P1
             // 
             this.rb301P1.AutoSize = true;
-            this.rb301P1.Location = new System.Drawing.Point(154, 101);
+            this.rb301P1.Location = new System.Drawing.Point(6, 19);
             this.rb301P1.Name = "rb301P1";
             this.rb301P1.Size = new System.Drawing.Size(43, 17);
             this.rb301P1.TabIndex = 5;
@@ -98,7 +111,7 @@
             // rb501P1
             // 
             this.rb501P1.AutoSize = true;
-            this.rb501P1.Location = new System.Drawing.Point(154, 124);
+            this.rb501P1.Location = new System.Drawing.Point(6, 42);
             this.rb501P1.Name = "rb501P1";
             this.rb501P1.Size = new System.Drawing.Size(43, 17);
             this.rb501P1.TabIndex = 6;
@@ -109,7 +122,7 @@
             // rb701P1
             // 
             this.rb701P1.AutoSize = true;
-            this.rb701P1.Location = new System.Drawing.Point(154, 147);
+            this.rb701P1.Location = new System.Drawing.Point(6, 65);
             this.rb701P1.Name = "rb701P1";
             this.rb701P1.Size = new System.Drawing.Size(43, 17);
             this.rb701P1.TabIndex = 7;
@@ -117,14 +130,100 @@
             this.rb701P1.Text = "701";
             this.rb701P1.UseVisualStyleBackColor = true;
             // 
+            // gbScore
+            // 
+            this.gbScore.Controls.Add(this.tbCostum);
+            this.gbScore.Controls.Add(this.rbCostum);
+            this.gbScore.Controls.Add(this.rb301P1);
+            this.gbScore.Controls.Add(this.rb701P1);
+            this.gbScore.Controls.Add(this.rb501P1);
+            this.gbScore.Location = new System.Drawing.Point(27, 83);
+            this.gbScore.Name = "gbScore";
+            this.gbScore.Size = new System.Drawing.Size(146, 133);
+            this.gbScore.TabIndex = 8;
+            this.gbScore.TabStop = false;
+            this.gbScore.Text = "Score";
+            // 
+            // gbBot
+            // 
+            this.gbBot.Location = new System.Drawing.Point(199, 83);
+            this.gbBot.Name = "gbBot";
+            this.gbBot.Size = new System.Drawing.Size(200, 133);
+            this.gbBot.TabIndex = 9;
+            this.gbBot.TabStop = false;
+            this.gbBot.Text = "Bot";
+            // 
+            // gbSpel
+            // 
+            this.gbSpel.Controls.Add(this.nudSets);
+            this.gbSpel.Controls.Add(this.nudLegs);
+            this.gbSpel.Controls.Add(this.lblSpelSets);
+            this.gbSpel.Controls.Add(this.lblSpelLegs);
+            this.gbSpel.Location = new System.Drawing.Point(27, 222);
+            this.gbSpel.Name = "gbSpel";
+            this.gbSpel.Size = new System.Drawing.Size(372, 73);
+            this.gbSpel.TabIndex = 10;
+            this.gbSpel.TabStop = false;
+            this.gbSpel.Text = "Spel";
+            // 
+            // lblSpelLegs
+            // 
+            this.lblSpelLegs.AutoSize = true;
+            this.lblSpelLegs.Location = new System.Drawing.Point(6, 20);
+            this.lblSpelLegs.Name = "lblSpelLegs";
+            this.lblSpelLegs.Size = new System.Drawing.Size(36, 13);
+            this.lblSpelLegs.TabIndex = 0;
+            this.lblSpelLegs.Text = "Legs :";
+            // 
+            // lblSpelSets
+            // 
+            this.lblSpelSets.AutoSize = true;
+            this.lblSpelSets.Location = new System.Drawing.Point(180, 20);
+            this.lblSpelSets.Name = "lblSpelSets";
+            this.lblSpelSets.Size = new System.Drawing.Size(34, 13);
+            this.lblSpelSets.TabIndex = 1;
+            this.lblSpelSets.Text = "Sets :";
+            // 
+            // nudLegs
+            // 
+            this.nudLegs.Location = new System.Drawing.Point(48, 18);
+            this.nudLegs.Name = "nudLegs";
+            this.nudLegs.Size = new System.Drawing.Size(98, 20);
+            this.nudLegs.TabIndex = 2;
+            // 
+            // nudSets
+            // 
+            this.nudSets.Location = new System.Drawing.Point(220, 18);
+            this.nudSets.Name = "nudSets";
+            this.nudSets.Size = new System.Drawing.Size(98, 20);
+            this.nudSets.TabIndex = 3;
+            // 
+            // rbCostum
+            // 
+            this.rbCostum.AutoSize = true;
+            this.rbCostum.Location = new System.Drawing.Point(6, 88);
+            this.rbCostum.Name = "rbCostum";
+            this.rbCostum.Size = new System.Drawing.Size(60, 17);
+            this.rbCostum.TabIndex = 8;
+            this.rbCostum.TabStop = true;
+            this.rbCostum.Text = "Costum";
+            this.rbCostum.UseVisualStyleBackColor = true;
+            // 
+            // tbCostum
+            // 
+            this.tbCostum.Location = new System.Drawing.Point(6, 107);
+            this.tbCostum.Name = "tbCostum";
+            this.tbCostum.Size = new System.Drawing.Size(100, 20);
+            this.tbCostum.TabIndex = 9;
+            // 
             // Instellingen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 348);
-            this.Controls.Add(this.rb701P1);
-            this.Controls.Add(this.rb501P1);
-            this.Controls.Add(this.rb301P1);
+            this.Controls.Add(this.gbSpel);
+            this.Controls.Add(this.gbBot);
+            this.Controls.Add(this.gbScore);
             this.Controls.Add(this.btnBeginSpel);
             this.Controls.Add(this.tbSpeler2);
             this.Controls.Add(this.tbSpeler1);
@@ -132,6 +231,12 @@
             this.Controls.Add(this.label1);
             this.Name = "Instellingen";
             this.Text = "Instellingen";
+            this.gbScore.ResumeLayout(false);
+            this.gbScore.PerformLayout();
+            this.gbSpel.ResumeLayout(false);
+            this.gbSpel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLegs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSets)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,5 +252,14 @@
         private System.Windows.Forms.RadioButton rb301P1;
         private System.Windows.Forms.RadioButton rb501P1;
         private System.Windows.Forms.RadioButton rb701P1;
+        private System.Windows.Forms.GroupBox gbScore;
+        private System.Windows.Forms.TextBox tbCostum;
+        private System.Windows.Forms.RadioButton rbCostum;
+        private System.Windows.Forms.GroupBox gbBot;
+        private System.Windows.Forms.GroupBox gbSpel;
+        private System.Windows.Forms.NumericUpDown nudSets;
+        private System.Windows.Forms.NumericUpDown nudLegs;
+        private System.Windows.Forms.Label lblSpelSets;
+        private System.Windows.Forms.Label lblSpelLegs;
     }
 }
