@@ -10,12 +10,14 @@ namespace Business_Tier
     {
         public int Stand1 { get; set; }
         public int Stand2 { get; set; }
+        public int LegsTotaal { get; set; }
 
-        public Legs(string speler1, string speler2, int scoreP1, int scoreP2, int gmd1, int gmd2, int startScore, int stand1, int stand2)
+        public Legs(string speler1, string speler2, int scoreP1, int scoreP2, int gmd1, int gmd2, int startScore, int stand1, int stand2, int legsTotaal)
             : base (speler1, speler2, scoreP1, scoreP2, gmd1, gmd2, startScore)
         {
             this.Stand1 = stand1;
             this.Stand2 = stand2;
+            this.LegsTotaal = legsTotaal;
         }
     }
 }

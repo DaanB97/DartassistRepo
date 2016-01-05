@@ -48,9 +48,9 @@ namespace DartAssist
             }
         }
 
-        public void NieuwSpel(string speler1, string speler2, int score1, int score2, int startScore)
+        public void NieuwSpel(string speler1, string speler2, int score1, int score2, int startScore, int legsTotaal, int setsTotaal)
         {
-            spelController.NieuwSpel(speler1, speler2, score1, score2, startScore);
+            spelController.NieuwSpel(speler1, speler2, score1, score2, startScore, legsTotaal, setsTotaal);
         }
 
         private void btnInvoer1_Click(object sender, EventArgs e)

@@ -27,9 +27,11 @@ namespace DartAssist
         {
             string speler1 = tbSpeler1.Text;
             string speler2 = tbSpeler2.Text;
+            int legsTotaal = Convert.ToInt32(nudLegs.Value);
+            int setsTotaal = Convert.ToInt32(nudSets.Value);
             int i = CheckScores();
 
-            dartAssist.NieuwSpel(speler1,speler2,score1,score2,score1);
+            dartAssist.NieuwSpel(speler1,speler2,score1,score2,score1,legsTotaal, setsTotaal);
             return i;
         }
 
