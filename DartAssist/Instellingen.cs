@@ -14,13 +14,14 @@ namespace DartAssist
     public partial class Instellingen : Form
     {
         private DartAssist dartAssist;
-        private SpelController sp;
+        private SpelController spelController;
 
         public Instellingen()
         {
             InitializeComponent();
-            dartAssist = new DartAssist();
-            sp = new SpelController();
+           spelController = new SpelController();
+           dartAssist = new DartAssist(spelController);
+            
         }
 
         public int StartOpties()
@@ -39,7 +40,7 @@ namespace DartAssist
             int setsTotaal = Convert.ToInt32(nudSets.Value);
             int i = CheckScores();
 
-            sp.NieuwSpel(speler1, speler2, i, legsTotaal, setsTotaal,botGmd);
+            spelController.NieuwSpel(speler1, speler2, i, legsTotaal, setsTotaal,botGmd);
 
             if (i == 0)
             {

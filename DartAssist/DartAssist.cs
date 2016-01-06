@@ -15,11 +15,11 @@ namespace DartAssist
     {
         private SpelController spelController;
         private Eindstand es;
-        public DartAssist()
+        public DartAssist(SpelController spelController)
         {
             InitializeComponent();
-            spelController = new SpelController();
             es = new Eindstand(spelController);
+            this.spelController = spelController;
         }
 
         public void SpelStart()
@@ -96,11 +96,15 @@ namespace DartAssist
             //    es.Show();
             //}
             UpdateStand();
+
+            // Als er een bot aanwezig is in het spel is doet deze met het onderstaande stukje code een worp.
             foreach (Spel s in spelController.Spellen)
             {
                 if (s.Speler.SpelerType == SpelerType.Bot)
                 {
-                    // run programma zodat bot gooid en speler1 is weer aan de beurt.
+                    spelController.ScoreInvoer(0, lblNaamP2.Text);
+                    FillLabels();
+                    UpdateStand();
                 }
             }
         }
