@@ -24,6 +24,16 @@ namespace DartAssist
 
         }
 
+        private void btnBeginSpel_Click(object sender, EventArgs e)
+        {
+            if (StartOpties() == 1)
+            {
+                dartAssist.SpelStart();
+                dartAssist.Show();
+            }
+        }
+
+        #region Start Game Checks
         public int StartOpties()
         {
             string speler1 = tbSpeler1.Text;
@@ -49,15 +59,6 @@ namespace DartAssist
             else
             {
                 return 1;
-            }
-        }
-
-        private void btnBeginSpel_Click(object sender, EventArgs e)
-        {
-            if (StartOpties() == 1)
-            {
-                dartAssist.SpelStart();
-                dartAssist.Show();
             }
         }
 
@@ -90,6 +91,6 @@ namespace DartAssist
                 return 0;
             }
         }
-
+        #endregion
     }
 }

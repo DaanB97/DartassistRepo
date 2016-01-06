@@ -20,8 +20,10 @@ namespace DartAssist
             InitializeComponent();
             es = new Eindstand(spelController);
             this.spelController = spelController;
+            btnInvoer2.Enabled = false;
         }
 
+        #region Spel initialiseren
         public void SpelStart()
         {
             string naam = "";
@@ -47,7 +49,104 @@ namespace DartAssist
                 }
             }
         }
+        #endregion
 
+        #region score invoer
+
+        private void btnInvoer1_Click(object sender, EventArgs e)
+        {
+            if (tbInvoer1.Text == "")
+            {
+                MessageBox.Show("Voer score in");
+            }
+            else
+            {
+                string naam1 = lblNaamP1.Text;
+                int invoer1 = Convert.ToInt32(tbInvoer1.Text);
+                spelController.ScoreInvoer(invoer1, naam1);
+                FillLabels();
+                tbInvoer1.Text = "";
+            }
+
+            UpdateStand();
+            SwitchTurn();
+            CheckEindeSpel();
+
+            BotTurn();
+        }
+
+        private void btnInvoer2_Click(object sender, EventArgs e)
+        {
+            if (tbInvoer2.Text == "")
+            {
+                MessageBox.Show("Voer score in");
+            }
+            else
+            {
+                string naam2 = lblNaamP2.Text;
+                int invoer2 = Convert.ToInt32(tbInvoer2.Text);
+                spelController.ScoreInvoer(invoer2, naam2);
+                FillLabels();
+                tbInvoer2.Text = "";
+            }
+            UpdateStand();
+            SwitchTurn();
+            CheckEindeSpel();
+        }
+
+        #endregion
+
+        #region Bot
+        public void BotTurn()
+        {
+            foreach (Spel s in spelController.Spellen)
+            {
+                if (s.Speler.SpelerType == SpelerType.Bot)
+                {
+                    spelController.ScoreInvoer(0, lblNaamP2.Text);
+                    FillLabels();
+                    UpdateStand();
+                    SwitchTurn();
+                    CheckEindeSpel();
+                }
+            }
+        }
+        #endregion
+
+        #region Updates
+
+        /// <summary>
+        /// Controleerd of het spel is afgelopen of niet.
+        /// </summary>
+        public void CheckEindeSpel()
+        {
+            if (spelController.CheckEindeSpel() == true)
+            {
+                es.FillLabels();
+                es.Show();
+            }
+        }
+
+        /// <summary>
+        /// Zorgt ervoor dat iemand niet 2 keer achter elkaar een score kan invullen.
+        /// </summary>
+        public void SwitchTurn()
+        {
+            if (btnInvoer1.Enabled == true)
+            {
+                btnInvoer1.Enabled = false;
+                btnInvoer2.Enabled = true;
+            }
+            else if (btnInvoer2.Enabled == true)
+            {
+                btnInvoer1.Enabled = true;
+                btnInvoer2.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Zorgt ervoor dat de stand in real- time getoond wordt.
+        /// </summary>
         public void UpdateStand()
         {
             foreach (Legs s in spelController.Legs)
@@ -74,45 +173,9 @@ namespace DartAssist
             }
         }
 
-        private void btnInvoer1_Click(object sender, EventArgs e)
-        {
-            if (tbInvoer1.Text == "")
-            {
-                MessageBox.Show("Voer score in");
-            }
-            else
-            {
-                string naam1 = lblNaamP1.Text;
-                int invoer1 = Convert.ToInt32(tbInvoer1.Text);
-                spelController.ScoreInvoer(invoer1, naam1);
-                FillLabels();
-                tbInvoer1.Text = "";
-            }
-
-            UpdateStand();
-            CheckEindeSpel();
-
-            BotTurn();
-        }
-
-        private void btnInvoer2_Click(object sender, EventArgs e)
-        {
-            if (tbInvoer2.Text == "")
-            {
-                MessageBox.Show("Voer score in");
-            }
-            else
-            {
-                string naam2 = lblNaamP2.Text;
-                int invoer2 = Convert.ToInt32(tbInvoer2.Text);
-                spelController.ScoreInvoer(invoer2, naam2);
-                FillLabels();
-                tbInvoer2.Text = "";
-            }
-            UpdateStand();
-            CheckEindeSpel();
-        }
-
+        /// <summary>
+        /// Vult alle labels met de nodige informatie.
+        /// </summary>
         private void FillLabels()
         {
             string naam1 = lblNaamP1.Text;
@@ -138,28 +201,6 @@ namespace DartAssist
             lblUitworp1.Text = spelController.UitworpTonen(naam1);
             lblUitworp2.Text = spelController.UitworpTonen(naam2);
         }
-
-        public void BotTurn()
-        {
-            foreach (Spel s in spelController.Spellen)
-            {
-                if (s.Speler.SpelerType == SpelerType.Bot)
-                {
-                    spelController.ScoreInvoer(0, lblNaamP2.Text);
-                    FillLabels();
-                    UpdateStand();
-                    CheckEindeSpel();
-                }
-            }
-        }
-
-        public void CheckEindeSpel()
-        {
-            if (spelController.CheckEindeSpel() == true)
-            {
-                es.FillLabels();
-                es.Show();
-            }
-        }
+        #endregion
     }
 }

@@ -20,6 +20,7 @@ namespace DartAssist
             this.spelController = spelController;
         }
 
+        #region Labels vullen
         public void FillLabels()
         {
             string speler1 = "";
@@ -76,5 +77,6 @@ namespace DartAssist
                 }
             }
         }
+        #endregion
     }
 }
