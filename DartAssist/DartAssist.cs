@@ -21,6 +21,7 @@ namespace DartAssist
             es = new Eindstand(spelController);
             this.spelController = spelController;
             btnInvoer2.Enabled = false;
+            lblTurn2.Visible = false;
         }
 
         #region Spel initialiseren
@@ -63,7 +64,6 @@ namespace DartAssist
                 FillLabels();
                 tbInvoer1.Text = "";
             }
-
             UpdateStand();
             SwitchTurn();
             CheckEindeSpel();
@@ -132,11 +132,15 @@ namespace DartAssist
             {
                 btnInvoer1.Enabled = false;
                 btnInvoer2.Enabled = true;
+                lblTurn1.Visible = false;
+                lblTurn2.Visible = true;
             }
             else if (btnInvoer2.Enabled == true)
             {
                 btnInvoer1.Enabled = true;
                 btnInvoer2.Enabled = false;
+                lblTurn1.Visible = true;
+                lblTurn2.Visible = false;
             }
         }
 
@@ -180,14 +184,12 @@ namespace DartAssist
             {
                 if (s.Speler1.Naam == naam1)
                 {
-                    lblLaatsteScore1.Text = Convert.ToString(Convert.ToInt32(lblScore1.Text) - s.Speler1.Score);
                     lblScore1.Text = Convert.ToString(s.Speler1.Score);
                     lblGemiddelde1.Text = Convert.ToString(s.Speler1.Gemiddelde);
                     lblAantalDarts1.Text = Convert.ToString(s.Speler1.Darts);
                 }
-                else if (s.Speler2.Naam == naam2)
+                if (s.Speler2.Naam == naam2)
                 {
-                    lblLaatsteScore2.Text = Convert.ToString(Convert.ToInt32(lblScore2.Text) - s.Speler2.Score);
                     lblScore2.Text = Convert.ToString(s.Speler2.Score);
                     lblGemiddelde2.Text = Convert.ToString(s.Speler2.Gemiddelde);
                     lblAantalDarts2.Text = Convert.ToString(s.Speler2.Darts);

@@ -43,16 +43,12 @@
             this.btnInvoer2 = new System.Windows.Forms.Button();
             this.btnInvoer1 = new System.Windows.Forms.Button();
             this.tbInvoer1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblLaatsteScore1 = new System.Windows.Forms.Label();
             this.lblGemiddelde1 = new System.Windows.Forms.Label();
             this.lblAantalDarts1 = new System.Windows.Forms.Label();
-            this.lblLaatsteScore2 = new System.Windows.Forms.Label();
             this.lblGemiddelde2 = new System.Windows.Forms.Label();
             this.lblAantalDarts2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -209,31 +205,11 @@
             this.tbInvoer1.Size = new System.Drawing.Size(143, 20);
             this.tbInvoer1.TabIndex = 1;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 232);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Laatste score : ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(401, 232);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 20);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Laatste score : ";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(13, 295);
+            this.label6.Location = new System.Drawing.Point(8, 250);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 20);
             this.label6.TabIndex = 11;
@@ -243,7 +219,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(13, 265);
+            this.label7.Location = new System.Drawing.Point(8, 220);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(138, 20);
             this.label7.TabIndex = 12;
@@ -253,7 +229,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(401, 265);
+            this.label4.Location = new System.Drawing.Point(401, 220);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(138, 20);
             this.label4.TabIndex = 13;
@@ -263,27 +239,17 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(401, 295);
+            this.label5.Location = new System.Drawing.Point(401, 250);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 20);
             this.label5.TabIndex = 14;
             this.label5.Text = "Aantal Darts :";
             // 
-            // lblLaatsteScore1
-            // 
-            this.lblLaatsteScore1.AutoSize = true;
-            this.lblLaatsteScore1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLaatsteScore1.Location = new System.Drawing.Point(137, 232);
-            this.lblLaatsteScore1.Name = "lblLaatsteScore1";
-            this.lblLaatsteScore1.Size = new System.Drawing.Size(14, 20);
-            this.lblLaatsteScore1.TabIndex = 15;
-            this.lblLaatsteScore1.Text = "-";
-            // 
             // lblGemiddelde1
             // 
             this.lblGemiddelde1.AutoSize = true;
             this.lblGemiddelde1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGemiddelde1.Location = new System.Drawing.Point(157, 265);
+            this.lblGemiddelde1.Location = new System.Drawing.Point(152, 220);
             this.lblGemiddelde1.Name = "lblGemiddelde1";
             this.lblGemiddelde1.Size = new System.Drawing.Size(14, 20);
             this.lblGemiddelde1.TabIndex = 16;
@@ -293,27 +259,17 @@
             // 
             this.lblAantalDarts1.AutoSize = true;
             this.lblAantalDarts1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAantalDarts1.Location = new System.Drawing.Point(125, 295);
+            this.lblAantalDarts1.Location = new System.Drawing.Point(120, 250);
             this.lblAantalDarts1.Name = "lblAantalDarts1";
             this.lblAantalDarts1.Size = new System.Drawing.Size(18, 20);
             this.lblAantalDarts1.TabIndex = 17;
             this.lblAantalDarts1.Text = "0";
             // 
-            // lblLaatsteScore2
-            // 
-            this.lblLaatsteScore2.AutoSize = true;
-            this.lblLaatsteScore2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLaatsteScore2.Location = new System.Drawing.Point(525, 232);
-            this.lblLaatsteScore2.Name = "lblLaatsteScore2";
-            this.lblLaatsteScore2.Size = new System.Drawing.Size(14, 20);
-            this.lblLaatsteScore2.TabIndex = 18;
-            this.lblLaatsteScore2.Text = "-";
-            // 
             // lblGemiddelde2
             // 
             this.lblGemiddelde2.AutoSize = true;
             this.lblGemiddelde2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGemiddelde2.Location = new System.Drawing.Point(545, 265);
+            this.lblGemiddelde2.Location = new System.Drawing.Point(545, 220);
             this.lblGemiddelde2.Name = "lblGemiddelde2";
             this.lblGemiddelde2.Size = new System.Drawing.Size(14, 20);
             this.lblGemiddelde2.TabIndex = 19;
@@ -323,7 +279,7 @@
             // 
             this.lblAantalDarts2.AutoSize = true;
             this.lblAantalDarts2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAantalDarts2.Location = new System.Drawing.Point(513, 295);
+            this.lblAantalDarts2.Location = new System.Drawing.Point(513, 250);
             this.lblAantalDarts2.Name = "lblAantalDarts2";
             this.lblAantalDarts2.Size = new System.Drawing.Size(18, 20);
             this.lblAantalDarts2.TabIndex = 20;
@@ -405,7 +361,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 388);
+            this.ClientSize = new System.Drawing.Size(677, 289);
             this.Controls.Add(this.lblSetsStand2);
             this.Controls.Add(this.lblSetsStand1);
             this.Controls.Add(this.label10);
@@ -416,16 +372,12 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblAantalDarts2);
             this.Controls.Add(this.lblGemiddelde2);
-            this.Controls.Add(this.lblLaatsteScore2);
             this.Controls.Add(this.lblAantalDarts1);
             this.Controls.Add(this.lblGemiddelde1);
-            this.Controls.Add(this.lblLaatsteScore1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnInvoer1);
             this.Controls.Add(this.tbInvoer1);
             this.Controls.Add(this.btnInvoer2);
@@ -459,16 +411,12 @@
         private System.Windows.Forms.Button btnInvoer2;
         private System.Windows.Forms.Button btnInvoer1;
         private System.Windows.Forms.TextBox tbInvoer1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblLaatsteScore1;
         private System.Windows.Forms.Label lblGemiddelde1;
         private System.Windows.Forms.Label lblAantalDarts1;
-        private System.Windows.Forms.Label lblLaatsteScore2;
         private System.Windows.Forms.Label lblGemiddelde2;
         private System.Windows.Forms.Label lblAantalDarts2;
         private System.Windows.Forms.Label lblNaamP1;
