@@ -25,19 +25,12 @@ namespace DartAssist
         {
             string speler1 = "";
             string speler2 = "";
-            int count = 0;
             foreach (Spel s in spelController.Spellen)
             {
-                if (count == 0)
-                {
-                    speler1 = s.Speler.Naam;
-                    count++;
-                }
-                else if (count == 1)
-                {
-                    speler2 = s.Speler.Naam;
-                    count++;
-                }
+                speler1 = s.Speler1.Naam;
+                speler2 = s.Speler2.Naam;
+                gbSpeler1.Text = speler1;
+                gbSpeler2.Text = speler2;
             }
             foreach (Statistieken stat in spelController.Statistieken)
             {
@@ -63,17 +56,6 @@ namespace DartAssist
                     lbl140P2.Text = Convert.ToString(stat.Aantal140);
                     lbl180P2.Text = Convert.ToString(stat.Aantal180);
                     lblDpLP2.Text = Convert.ToString(stat.DartsPerLeg);
-                }
-            }
-            foreach (Spel s in spelController.Spellen)
-            {
-                if(s.Speler.Naam == speler1)
-                {
-                    gbSpeler1.Text = s.Speler.Naam;
-                }
-                if (s.Speler.Naam == speler2)
-                {
-                    gbSpeler2.Text = s.Speler.Naam;
                 }
             }
         }

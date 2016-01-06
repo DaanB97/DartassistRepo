@@ -26,26 +26,22 @@ namespace DartAssist
         #region Spel initialiseren
         public void SpelStart()
         {
-            string naam = "";
+            string naam1 = "";
+            string naam2 = "";
             foreach (Spel s in spelController.Spellen)
             {
-                naam = s.Speler.Naam;
+                naam1 = s.Speler1.Naam;
+                naam2 = s.Speler2.Naam;
             }
 
             foreach (Spel s in spelController.Spellen)
             {
-                if (s.Speler.Naam != " ")
+                if (s.Speler1.Naam != " ")
                 {
-                    if (s.Speler.Naam == naam)
-                    {
-                        lblNaamP2.Text = s.Speler.Naam.ToString();
-                        lblScore2.Text = Convert.ToString(s.Speler.Score);
-                    }
-                    else if (s.Speler.Naam != naam)
-                    {
-                        lblNaamP1.Text = s.Speler.Naam.ToString();
-                        lblScore1.Text = Convert.ToString(s.Speler.Score);
-                    }
+                    lblNaamP2.Text = s.Speler2.Naam.ToString();
+                    lblScore2.Text = Convert.ToString(s.Speler2.Score);
+                    lblNaamP1.Text = s.Speler1.Naam.ToString();
+                    lblScore1.Text = Convert.ToString(s.Speler1.Score);
                 }
             }
         }
@@ -101,7 +97,7 @@ namespace DartAssist
         {
             foreach (Spel s in spelController.Spellen)
             {
-                if (s.Speler.SpelerType == SpelerType.Bot)
+                if (s.Speler2.SpelerType == SpelerType.Bot)
                 {
                     spelController.ScoreInvoer(0, lblNaamP2.Text);
                     FillLabels();
@@ -151,22 +147,22 @@ namespace DartAssist
         {
             foreach (Legs s in spelController.Legs)
             {
-                if (s.Speler.Naam == lblNaamP1.Text)
+                if (s.Speler1.Naam == lblNaamP1.Text)
                 {
                     lblLegs1.Text = Convert.ToString(s.Stand);
                 }
-                else if (s.Speler.Naam == lblNaamP2.Text)
+                else if (s.Speler2.Naam == lblNaamP2.Text)
                 {
                     lblLegs2.Text = Convert.ToString(s.Stand);
                 }
             }
             foreach (Sets s in spelController.Sets)
             {
-                if (s.Speler.Naam == lblNaamP1.Text)
+                if (s.Speler1.Naam == lblNaamP1.Text)
                 {
                     lblSetsStand1.Text = Convert.ToString(s.SetsStand);
                 }
-                else if (s.Speler.Naam == lblNaamP2.Text)
+                else if (s.Speler2.Naam == lblNaamP2.Text)
                 {
                     lblSetsStand2.Text = Convert.ToString(s.SetsStand);
                 }
@@ -182,19 +178,19 @@ namespace DartAssist
             string naam2 = lblNaamP2.Text;
             foreach (Spel s in spelController.Spellen)
             {
-                if (s.Speler.Naam == naam1)
+                if (s.Speler1.Naam == naam1)
                 {
-                    lblLaatsteScore1.Text = Convert.ToString(Convert.ToInt32(lblScore1.Text) - s.Speler.Score);
-                    lblScore1.Text = Convert.ToString(s.Speler.Score);
-                    lblGemiddelde1.Text = Convert.ToString(s.Speler.Gemiddelde);
-                    lblAantalDarts1.Text = Convert.ToString(s.Speler.Darts);
+                    lblLaatsteScore1.Text = Convert.ToString(Convert.ToInt32(lblScore1.Text) - s.Speler1.Score);
+                    lblScore1.Text = Convert.ToString(s.Speler1.Score);
+                    lblGemiddelde1.Text = Convert.ToString(s.Speler1.Gemiddelde);
+                    lblAantalDarts1.Text = Convert.ToString(s.Speler1.Darts);
                 }
-                else if (s.Speler.Naam == naam2)
+                else if (s.Speler2.Naam == naam2)
                 {
-                    lblLaatsteScore2.Text = Convert.ToString(Convert.ToInt32(lblScore2.Text) - s.Speler.Score);
-                    lblScore2.Text = Convert.ToString(s.Speler.Score);
-                    lblGemiddelde2.Text = Convert.ToString(s.Speler.Gemiddelde);
-                    lblAantalDarts2.Text = Convert.ToString(s.Speler.Darts);
+                    lblLaatsteScore2.Text = Convert.ToString(Convert.ToInt32(lblScore2.Text) - s.Speler2.Score);
+                    lblScore2.Text = Convert.ToString(s.Speler2.Score);
+                    lblGemiddelde2.Text = Convert.ToString(s.Speler2.Gemiddelde);
+                    lblAantalDarts2.Text = Convert.ToString(s.Speler2.Darts);
                 }
 
             }

@@ -98,25 +98,22 @@ namespace Business_Tier
 
         public void SaveGemiddelde(string naam, List<Spel> spellen, List<Statistieken> stats)
         {
-            // Dit zou je als counter kunnen gebruiken maar zodra er met sets wordt gespeeld doet dit het niet meer
-            //int counter = 0;
-            //foreach (Legs l in legs)
-            //{
-            //    counter = counter + l.Stand;
-            //}
             foreach (Spel s in spellen)
             {
                 if (s.Speler1.Naam == naam)
                 {
                     foreach (Statistieken stat in stats)
                     {
-                        if (stat.Gemiddelde == 0)
+                        if (stat.Speler == s.Speler1.Naam)
                         {
-                            stat.Gemiddelde = s.Speler1.Gemiddelde;
-                        }
-                        else
-                        {
-                            stat.Gemiddelde = s.Speler1.Gemiddelde / s.LegCount;
+                            if (stat.Gemiddelde == 0)
+                            {
+                                stat.Gemiddelde = s.Speler1.Gemiddelde;
+                            }
+                            else
+                            {
+                                stat.Gemiddelde = s.Speler1.Gemiddelde / s.LegCount;
+                            }
                         }
                     }
                 }
@@ -124,13 +121,16 @@ namespace Business_Tier
                 {
                     foreach (Statistieken stat in stats)
                     {
-                        if (stat.Gemiddelde == 0)
+                        if (stat.Speler == s.Speler2.Naam)
                         {
-                            stat.Gemiddelde = s.Speler2.Gemiddelde;
-                        }
-                        else
-                        {
-                            stat.Gemiddelde = s.Speler2.Gemiddelde / s.LegCount;
+                            if (stat.Gemiddelde == 0)
+                            {
+                                stat.Gemiddelde = s.Speler2.Gemiddelde;
+                            }
+                            else
+                            {
+                                stat.Gemiddelde = s.Speler2.Gemiddelde / s.LegCount;
+                            }
                         }
                     }
                 }
@@ -149,34 +149,17 @@ namespace Business_Tier
 
             if (check == 1)
             {
-                int countsets = 0;
                 foreach (Spel s in spellen)
                 {
                     foreach (Sets set in sets)
                     {
                         if (s.Speler1.Naam == set.Speler1.Naam)
                         {
-                            if (countsets == 0)
-                            {
-                                p1score = set.SetsStand;
-                                countsets++;
-                            }
-                            else if (countsets == 1)
-                            {
-                                p2score = set.SetsStand;
-                            }
+                            p1score = set.SetsStand;
                         }
                         else if (s.Speler2.Naam == set.Speler2.Naam)
                         {
-                            if (countsets == 0)
-                            {
-                                p1score = set.SetsStand;
-                                countsets++;
-                            }
-                            else if (countsets == 1)
-                            {
-                                p2score = set.SetsStand;
-                            }
+                            p2score = set.SetsStand;
                         }
                     }
                 }
@@ -184,34 +167,17 @@ namespace Business_Tier
             }
             else if (check == 0)
             {
-                int countlegs = 0;
                 foreach (Spel s in spellen)
                 {
                     foreach (Legs l in legs)
                     {
                         if (s.Speler1.Naam == l.Speler1.Naam)
                         {
-                            if (countlegs == 0)
-                            {
-                                p1score = l.Stand;
-                                countlegs++;
-                            }
-                            else if (countlegs == 1)
-                            {
-                                p2score = l.Stand;
-                            }
+                            p1score = l.Stand;
                         }
                         else if (s.Speler2.Naam == l.Speler2.Naam)
                         {
-                            if (countlegs == 0)
-                            {
-                                p1score = l.Stand;
-                                countlegs++;
-                            }
-                            else if (countlegs == 1)
-                            {
-                                p2score = l.Stand;
-                            }
+                            p2score = l.Stand;
                         }
                     }
                 }
@@ -238,13 +204,16 @@ namespace Business_Tier
                 {
                     foreach (Statistieken stat in stats)
                     {
-                        if (stat.DartsPerLeg == 0)
+                        if (stat.Speler == s.Speler1.Naam)
                         {
-                            stat.DartsPerLeg = s.Speler1.Darts;
-                        }
-                        else
-                        {
-                            stat.DartsPerLeg = s.Speler1.Darts / s.LegCount;
+                            if (stat.DartsPerLeg == 0)
+                            {
+                                stat.DartsPerLeg = s.Speler1.Darts;
+                            }
+                            else
+                            {
+                                stat.DartsPerLeg = s.Speler1.Darts / s.LegCount;
+                            }
                         }
                     }
                 }
@@ -252,13 +221,16 @@ namespace Business_Tier
                 {
                     foreach (Statistieken stat in stats)
                     {
-                        if (stat.DartsPerLeg == 0)
+                        if (stat.Speler == s.Speler2.Naam)
                         {
-                            stat.DartsPerLeg = s.Speler2.Darts;
-                        }
-                        else
-                        {
-                            stat.DartsPerLeg = s.Speler2.Darts / s.LegCount;
+                            if (stat.DartsPerLeg == 0)
+                            {
+                                stat.DartsPerLeg = s.Speler2.Darts;
+                            }
+                            else
+                            {
+                                stat.DartsPerLeg = s.Speler2.Darts / s.LegCount;
+                            }
                         }
                     }
                 }
