@@ -73,6 +73,9 @@
     <EmbeddedResource Include="DartAssist.resx">
       <DependentUpon>DartAssist.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Eindstand.resx">
+      <DependentUpon>Eindstand.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Instellingen.resx">
       <DependentUpon>Instellingen.cs</DependentUpon>
     </EmbeddedResource>

@@ -157,6 +157,7 @@ namespace DartAssist
         {
             if (spelController.CheckEindeSpel() == true)
             {
+                es.FillLabels();
                 es.Show();
             }
         }
