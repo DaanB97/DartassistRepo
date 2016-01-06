@@ -36,8 +36,15 @@ namespace Business_Tier
             return true;
         }
 
-        public void EindeSpel(string naam)
+        public void EindeSpel(string naam, int i)
         {
+            // Geeft einstand aan statistieken voor je ze laat zien.
+            string eindstand = SaveEindstand(i);
+            foreach (Statistieken stat in statistieken)
+            {
+                stat.Eindstand = eindstand;
+            }
+
             // Tonen dat speler "naam" heeft gewonnen
             // Eindoverzicht geven
         }
@@ -93,7 +100,7 @@ namespace Business_Tier
         /// <param name="score"></param>
         public void SaveUitworp(string naam, int score)
         {
-            foreach(Statistieken s in statistieken)
+            foreach (Statistieken s in statistieken)
             {
                 if (s.Speler == naam)
                 {
@@ -128,7 +135,7 @@ namespace Business_Tier
                         }
                     }
                 }
-                else if(s.Speler2 == naam)
+                else if (s.Speler2 == naam)
                 {
                     foreach (Statistieken stat in statistieken)
                     {
@@ -146,16 +153,32 @@ namespace Business_Tier
             }
         }
 
-        public void SaveEindstand()
-        {
+        /// <summary>
+        /// Geeft de eindstand terug.
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
 
+        public string SaveEindstand(int check)
+        {
+            if (check == 1)
+            {
+                foreach (Sets s in sets)
+                {
+                    return s.SetsStand1 + " - " + s.SetsStand2;
+                }
+            }
+            else if (check == 0)
+            {
+                foreach (Legs l in legs)
+                {
+                    return l.Stand1 + " - " + l.Stand2;
+                }
+            }
+            return null;
         }
 
         #endregion
-        public void StatistiekenTonen()
-        {
-
-        }
 
         #region AVG
         /// <summary>
@@ -201,7 +224,7 @@ namespace Business_Tier
 
         #endregion
 
-
+        #region Algoritme voor spel
         /// <summary>
         /// Invoer van score en main algoritme van het programma
         /// </summary>
@@ -247,14 +270,12 @@ namespace Business_Tier
 
                                                 if (set.SetsStand1 == set.SetsTotaal)
                                                 {
-                                                    SaveEindstand();
-                                                    EindeSpel(naam); // Einde spel.
+                                                    EindeSpel(naam, 1); // Einde spel.
                                                 }
                                             }
                                             else
                                             {
-                                                SaveEindstand();
-                                                EindeSpel(naam); // Einde spel.
+                                                EindeSpel(naam, 0); // Einde spel.
                                             }
                                         }
                                     }
@@ -307,14 +328,12 @@ namespace Business_Tier
 
                                                 if (set.SetsStand1 == set.SetsTotaal)
                                                 {
-                                                    SaveEindstand();
-                                                    EindeSpel(naam);// Einde spel.
+                                                    EindeSpel(naam, 1);// Einde spel.
                                                 }
                                             }
                                             else
                                             {
-                                                SaveEindstand();
-                                                EindeSpel(naam); // Einde spel.
+                                                EindeSpel(naam, 0); // Einde spel.
                                             }
                                         }
                                     }
@@ -1412,6 +1431,7 @@ namespace Business_Tier
                 score2 = 0;
             }
         }
+        #endregion
 
         public void BotniveauInstellen()
         {
