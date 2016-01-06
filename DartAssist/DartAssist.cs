@@ -24,15 +24,26 @@ namespace DartAssist
 
         public void SpelStart()
         {
+            string naam = "";
+            foreach (Spel s in spelController.spellen)
+            {
+                naam = s.Speler.Naam;
+            }
 
             foreach (Spel s in spelController.spellen)
             {
-                if (s.Speler1 != " ")
+                if (s.Speler.Naam != " ")
                 {
-                    lblNaamP1.Text = s.Speler1.ToString();
-                    lblNaamP2.Text = s.Speler2.ToString();
-                    lblScore1.Text = Convert.ToString(s.Scorep1);
-                    lblScore2.Text = Convert.ToString(s.Scorep2);
+                    if (s.Speler.Naam == naam)
+                    {
+                        lblNaamP2.Text = s.Speler.Naam.ToString();
+                        lblScore2.Text = Convert.ToString(s.Speler.Score);
+                    }
+                    else if (s.Speler.Naam != naam)
+                    {
+                        lblNaamP1.Text = s.Speler.Naam.ToString();
+                        lblScore1.Text = Convert.ToString(s.Speler.Score);
+                    }
                 }
             }
         }
@@ -41,18 +52,24 @@ namespace DartAssist
         {
             foreach (Legs s in spelController.legs)
             {
-                if (s.Speler1 == lblNaamP1.Text)
+                if (s.Speler.Naam == lblNaamP1.Text)
                 {
-                    lblLegs1.Text = Convert.ToString(s.Stand1);
-                    lblLegs2.Text = Convert.ToString(s.Stand2);
+                    lblLegs1.Text = Convert.ToString(s.Stand);
+                }
+                else if(s.Speler.Naam == lblNaamP2.Text)
+                {
+                    lblLegs2.Text = Convert.ToString(s.Stand);
                 }
             }
             foreach (Sets s in spelController.sets)
             {
-                if(s.Speler1 == lblNaamP1.Text)
+                if(s.Speler.Naam == lblNaamP1.Text)
                 {
-                    lblSetsStand1.Text = Convert.ToString(s.SetsStand1);
-                    lblSetsStand2.Text = Convert.ToString(s.SetsStand2);
+                    lblSetsStand1.Text = Convert.ToString(s.SetsStand);
+                }
+                else if (s.Speler.Naam == lblNaamP2.Text)
+                {
+                    lblSetsStand2.Text = Convert.ToString(s.SetsStand);
                 }
             }
         }
@@ -104,12 +121,19 @@ namespace DartAssist
             string naam2 = lblNaamP2.Text;
             foreach (Spel s in spelController.spellen)
             {
-                lblScore1.Text = Convert.ToString(s.Scorep1);
-                lblScore2.Text = Convert.ToString(s.Scorep2);
-                lblGemiddelde1.Text = Convert.ToString(s.Gmd1);
-                lblGemiddelde2.Text = Convert.ToString(s.Gmd2);
-                lblAantalDarts1.Text = Convert.ToString(s.Count1);
-                lblAantalDarts2.Text = Convert.ToString(s.Count2);            
+                if (s.Speler.Naam == naam1)
+                {
+                    lblScore1.Text = Convert.ToString(s.Speler.Score);
+                    lblGemiddelde1.Text = Convert.ToString(s.Speler.Gemiddelde);
+                    lblAantalDarts1.Text = Convert.ToString(s.Speler.Gemiddelde);
+                }
+                else if (s.Speler.Naam == naam2)
+                {
+                    lblScore2.Text = Convert.ToString(s.Speler.Score);
+                    lblGemiddelde2.Text = Convert.ToString(s.Speler.Gemiddelde);
+                    lblAantalDarts2.Text = Convert.ToString(s.Speler.Darts);
+                }
+            
             }
             lblUitworp1.Text = spelController.UitworpTonen(naam1);
             lblUitworp2.Text = spelController.UitworpTonen(naam2);

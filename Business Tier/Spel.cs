@@ -26,7 +26,7 @@ namespace Business_Tier
 
         public override string ToString()
         {
-            return Speler + Startscore + BotGmd;
+            return "";
         }
     }
 }

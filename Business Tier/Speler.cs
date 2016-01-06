@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business_Tier
 {
-    class Speler
+    public class Speler
     {
         public SpelerType SpelerType { get; set; }
         public string Naam { get; set; }

@@ -8,15 +8,13 @@ namespace Business_Tier
 {
     public class Legs : Spel
     {
-        public int Stand1 { get; set; }
-        public int Stand2 { get; set; }
+        public int Stand { get; set; }
         public int LegsTotaal { get; set; }
 
-        public Legs(Speler speler, int startScore, int botGmd, int stand1, int stand2, int legsTotaal)
+        public Legs(Speler speler, int startScore, int botGmd, int stand, int legsTotaal)
             : base (speler, startScore, botGmd)
         {
-            this.Stand1 = stand1;
-            this.Stand2 = stand2;
+            this.Stand = stand;
             this.LegsTotaal = legsTotaal;
         }
     }
