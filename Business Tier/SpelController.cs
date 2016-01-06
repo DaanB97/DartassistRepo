@@ -10,7 +10,7 @@ namespace Business_Tier
     public class SpelController
     {
 
-        private int avgcounter1 = 2;
+        private int avgcounter = 2;
         private GemiddeldeBerekenen gb = new GemiddeldeBerekenen();
         private List<Spel> spellen = new List<Spel>();
         private List<Legs> legs = new List<Legs>();
@@ -36,12 +36,12 @@ namespace Business_Tier
             }
 
             Speler sp2 = new Speler(st, speler2, score, 0, 0);
-            Spel s1 = new Spel(sp1, score, botGmd);
-            Spel s2 = new Spel(sp2, score, botGmd);
-            Legs l1 = new Legs(sp1, score, botGmd, 0, legsTotaal);
-            Legs l2 = new Legs(sp2, score, botGmd, 0, legsTotaal);
-            Sets set1 = new Sets(sp1, score, botGmd, 0, setsTotaal);
-            Sets set2 = new Sets(sp2, score, botGmd, 0, setsTotaal);
+            Spel s1 = new Spel(sp1, score, botGmd, false);
+            Spel s2 = new Spel(sp2, score, botGmd, false);
+            Legs l1 = new Legs(sp1, score, botGmd, false, 0, legsTotaal);
+            Legs l2 = new Legs(sp2, score, botGmd, false, 0, legsTotaal);
+            Sets set1 = new Sets(sp1, score, botGmd, false, 0, setsTotaal);
+            Sets set2 = new Sets(sp2, score, botGmd, false, 0, setsTotaal);
             Statistieken stat1 = new Statistieken(speler1, "", 0, 0, 0, 0, 0, 0, 0, 0);
             Statistieken stat2 = new Statistieken(speler2, "", 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -56,6 +56,20 @@ namespace Business_Tier
             return true;
         }
 
+        public bool CheckEindeSpel()
+        {
+            bool check = false;
+            foreach (Spel s in spellen)
+            {
+                if (s.Einde == true)
+                {
+                    check = true;
+                    return check;
+                }
+            }
+            return check;
+        }
+
         public void EindeSpel(string naam, int i)
         {
             // Geeft einstand aan statistieken voor je ze laat zien.
@@ -65,12 +79,13 @@ namespace Business_Tier
                 stat.Eindstand = eindstand;
             }
 
-            // Tonen dat speler "naam" heeft gewonnen
-            // Eindoverzicht geven (nieuw form openen?)
-        }
-        public void GeefEindOverzicht()
-        {
-
+            foreach (Spel s in spellen)
+            {
+                if (s.Speler.Naam == naam)
+                {
+                    s.Einde = true;
+                }
+            }
         }
 
         #region Opslaan statistieken
@@ -147,11 +162,11 @@ namespace Business_Tier
                         if (stat.Gemiddelde == 0)
                         {
                             stat.Gemiddelde = s.Speler.Gemiddelde;
-                            avgcounter1++;
+                            avgcounter++;
                         }
                         else
                         {
-                            stat.Gemiddelde = s.Speler.Gemiddelde / avgcounter1;
+                            stat.Gemiddelde = s.Speler.Gemiddelde / avgcounter;
                         }
                     }
                 }
@@ -165,24 +180,54 @@ namespace Business_Tier
         /// <returns></returns>
         public string SaveEindstand(int check)
         {
+            int p1score = 0;
+            int p2score = 0;
+
             if (check == 1)
             {
+                int countsets = 0;
                 foreach (Spel s in spellen)
                 {
                     foreach (Sets set in sets)
                     {
                         if (s.Speler.Naam == set.Speler.Naam)
                         {
-
+                            if (countsets == 0)
+                            {
+                                p1score = set.SetsStand;
+                                countsets++;
+                            }
+                            else if (countsets == 1)
+                            {
+                                p2score = set.SetsStand;
+                            }
                         }
                     }
                 }
+                return p1score + " - " + p2score;
             }
             else if (check == 0)
             {
-                foreach (Legs l in legs)
+                int countlegs = 0;
+                foreach (Spel s in spellen)
                 {
+                    foreach (Legs l in legs)
+                    {
+                        if (s.Speler.Naam == l.Speler.Naam)
+                        {
+                            if (countlegs == 0)
+                            {
+                                p1score = l.Stand;
+                                countlegs++;
+                            }
+                            else if (countlegs == 1)
+                            {
+                                p2score = l.Stand;
+                            }
+                        }
+                    }
                 }
+                return p1score + " - " + p2score;
             }
             return null;
         }
@@ -218,6 +263,10 @@ namespace Business_Tier
                     if (s.Speler.SpelerType == SpelerType.Bot)
                     {
                         score = BotScore(naam);
+                        if (s.Speler.Score <= s.BotGmd)
+                        {
+                            score = s.Speler.Score;
+                        }
                     }
 
                     if (score <= 180)
@@ -842,7 +891,7 @@ namespace Business_Tier
         public int BotScore(string naam)
         {
             int score = 0;
-            foreach(Spel s in spellen)
+            foreach (Spel s in spellen)
             {
                 if (s.Speler.Naam == naam)
                 {

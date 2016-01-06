@@ -56,14 +56,14 @@ namespace DartAssist
                 {
                     lblLegs1.Text = Convert.ToString(s.Stand);
                 }
-                else if(s.Speler.Naam == lblNaamP2.Text)
+                else if (s.Speler.Naam == lblNaamP2.Text)
                 {
                     lblLegs2.Text = Convert.ToString(s.Stand);
                 }
             }
             foreach (Sets s in spelController.Sets)
             {
-                if(s.Speler.Naam == lblNaamP1.Text)
+                if (s.Speler.Naam == lblNaamP1.Text)
                 {
                     lblSetsStand1.Text = Convert.ToString(s.SetsStand);
                 }
@@ -87,26 +87,12 @@ namespace DartAssist
                 spelController.ScoreInvoer(invoer1, naam1);
                 FillLabels();
                 tbInvoer1.Text = "";
-                lblLaatsteScore1.Text = Convert.ToString(invoer1);
             }
 
-            //spelController.EindeSpel(); //laat een methode in spelcontroller controleren of het spel af is gelopen of niet.
-            //if ( if =1)
-            //{
-            //    es.Show();
-            //}
             UpdateStand();
+            CheckEindeSpel();
 
-            // Als er een bot aanwezig is in het spel is doet deze met het onderstaande stukje code een worp.
-            foreach (Spel s in spelController.Spellen)
-            {
-                if (s.Speler.SpelerType == SpelerType.Bot)
-                {
-                    spelController.ScoreInvoer(0, lblNaamP2.Text);
-                    FillLabels();
-                    UpdateStand();
-                }
-            }
+            BotTurn();
         }
 
         private void btnInvoer2_Click(object sender, EventArgs e)
@@ -122,9 +108,9 @@ namespace DartAssist
                 spelController.ScoreInvoer(invoer2, naam2);
                 FillLabels();
                 tbInvoer2.Text = "";
-                lblLaatsteScore2.Text = Convert.ToString(invoer2);
             }
             UpdateStand();
+            CheckEindeSpel();
         }
 
         private void FillLabels()
@@ -135,20 +121,44 @@ namespace DartAssist
             {
                 if (s.Speler.Naam == naam1)
                 {
+                    lblLaatsteScore1.Text = Convert.ToString(Convert.ToInt32(lblScore1.Text) - s.Speler.Score);
                     lblScore1.Text = Convert.ToString(s.Speler.Score);
                     lblGemiddelde1.Text = Convert.ToString(s.Speler.Gemiddelde);
-                    lblAantalDarts1.Text = Convert.ToString(s.Speler.Gemiddelde);
+                    lblAantalDarts1.Text = Convert.ToString(s.Speler.Darts);
                 }
                 else if (s.Speler.Naam == naam2)
                 {
+                    lblLaatsteScore2.Text = Convert.ToString(Convert.ToInt32(lblScore2.Text) - s.Speler.Score);
                     lblScore2.Text = Convert.ToString(s.Speler.Score);
                     lblGemiddelde2.Text = Convert.ToString(s.Speler.Gemiddelde);
                     lblAantalDarts2.Text = Convert.ToString(s.Speler.Darts);
                 }
-            
+
             }
             lblUitworp1.Text = spelController.UitworpTonen(naam1);
             lblUitworp2.Text = spelController.UitworpTonen(naam2);
+        }
+
+        public void BotTurn()
+        {
+            foreach (Spel s in spelController.Spellen)
+            {
+                if (s.Speler.SpelerType == SpelerType.Bot)
+                {
+                    spelController.ScoreInvoer(0, lblNaamP2.Text);
+                    FillLabels();
+                    UpdateStand();
+                    CheckEindeSpel();
+                }
+            }
+        }
+
+        public void CheckEindeSpel()
+        {
+            if (spelController.CheckEindeSpel() == true)
+            {
+                es.Show();
+            }
         }
     }
 }

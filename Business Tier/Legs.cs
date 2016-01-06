@@ -11,8 +11,8 @@ namespace Business_Tier
         public int Stand { get; set; }
         public int LegsTotaal { get; set; }
 
-        public Legs(Speler speler, int startScore, int botGmd, int stand, int legsTotaal)
-            : base (speler, startScore, botGmd)
+        public Legs(Speler speler, int startScore, int botGmd, bool einde, int stand, int legsTotaal)
+            : base (speler, startScore, botGmd, einde)
         {
             this.Stand = stand;
             this.LegsTotaal = legsTotaal;

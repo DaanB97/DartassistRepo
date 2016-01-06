@@ -11,17 +11,20 @@ namespace Business_Tier
         public Speler Speler { get; set; }
         public int Startscore { get; set; }
         public int BotGmd { get; set; }
+        public bool Einde { get; set; }
+
 
 
         public Spel()
         {
 
         }
-        public Spel(Speler speler, int startscore, int botGmd)
+        public Spel(Speler speler, int startscore, int botGmd, bool einde)
         {
             this.Speler = speler;
             this.Startscore = startscore;
             this.BotGmd = botGmd;
+            this.Einde = einde;
         }
 
         public override string ToString()
