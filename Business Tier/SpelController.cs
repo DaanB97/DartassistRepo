@@ -11,42 +11,158 @@ namespace Business_Tier
     {
         private int counter1 = 2;
         private int counter2 = 2;
+        private int avgcounter1 = 2;
+        private int avgcounter2 = 2;
         private int score1;
         private int score2;
 
         public List<Spel> spellen = new List<Spel>();
         public List<Legs> legs = new List<Legs>();
         public List<Sets> sets = new List<Sets>();
+        public List<Statistieken> statistieken = new List<Statistieken>();
         public bool NieuwSpel(string speler1, string speler2, int score1, int score2, int startScore, int legsTotaal, int setsTotaal)
         {
             Spel s = new Spel(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore);
             Legs l = new Legs(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore, 0, 0, legsTotaal);
             Sets set = new Sets(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore, 0, 0, setsTotaal);
+            Statistieken stat1 = new Statistieken(speler1, "", 0, 0, 0, 0, 0, 0, 0, 0);
+            Statistieken stat2 = new Statistieken(speler2, "", 0, 0, 0, 0, 0, 0, 0, 0);
+
+            statistieken.Add(stat1);
+            statistieken.Add(stat2);
             spellen.Add(s);
             legs.Add(l);
             sets.Add(set);
             return true;
         }
 
-        public void EindeSpel()
+        public void EindeSpel(string naam)
         {
-
+            // Tonen dat speler "naam" heeft gewonnen
+            // Eindoverzicht geven
         }
         public void GeefEindOverzicht()
         {
 
         }
 
-        public void SlaStatistiekenOp(string speler, int gmd, int hoogstescore, int hoogsteuitworp)
+        #region Opslaan statistieken
+
+        /// <summary>
+        /// scores checken kijken of ze moeten worden opgeslagen voor statistieken.
+        /// </summary>
+        /// <param name="naam"></param>
+        /// <param name="score"></param>
+        public void SaveScore(string naam, int score)
+        {
+            foreach (Statistieken s in statistieken)
+            {
+                if (s.Speler == naam)
+                {
+                    // checken op hoogste score
+                    if (s.HoogsteScore < score)
+                    {
+                        s.HoogsteScore = score;
+                    }
+
+                    // checken op wat voor scores het zijn
+                    if (score == 180)
+                    {
+                        s.Aantal180++;
+                    }
+                    else if (score >= 140)
+                    {
+                        s.Aantal140++;
+                    }
+                    else if (score >= 100)
+                    {
+                        s.Aantal100++;
+                    }
+                    else if (score >= 60)
+                    {
+                        s.Aantal60++;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// checked wat de hoogste score is en slaat dit op in de lijst.
+        /// </summary>
+        /// <param name="naam"></param>
+        /// <param name="score"></param>
+        public void SaveUitworp(string naam, int score)
+        {
+            foreach(Statistieken s in statistieken)
+            {
+                if (s.Speler == naam)
+                {
+                    if (s.HoogsteFinish < score)
+                    {
+                        s.HoogsteFinish = score;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gemiddelde opslaan bij de juiste speler.
+        /// </summary>
+        /// <param name="naam"></param>
+        public void SaveGemiddelde(string naam)
+        {
+            foreach (Spel s in spellen)
+            {
+                if (s.Speler1 == naam)
+                {
+                    foreach (Statistieken stat in statistieken)
+                    {
+                        if (stat.Gemiddelde == 0)
+                        {
+                            stat.Gemiddelde = s.Gmd1;
+                            avgcounter1++;
+                        }
+                        else
+                        {
+                            stat.Gemiddelde = s.Gmd1 / avgcounter1;
+                        }
+                    }
+                }
+                else if(s.Speler2 == naam)
+                {
+                    foreach (Statistieken stat in statistieken)
+                    {
+                        if (stat.Gemiddelde == 0)
+                        {
+                            stat.Gemiddelde = s.Gmd2;
+                            avgcounter2++;
+                        }
+                        else
+                        {
+                            stat.Gemiddelde = s.Gmd2 / avgcounter2;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void SaveEindstand()
         {
 
         }
 
+        #endregion
         public void StatistiekenTonen()
         {
 
         }
 
+        #region AVG
+        /// <summary>
+        /// gemiddelde per leg wordt berekend aan de hand van de naam van de speler en de score van de speler.
+        /// </summary>
+        /// <param name="naam"></param>
+        /// <param name="score"></param>
         public void GemiddeldePerLeg(string naam, int score)
         {
             foreach (Spel s in spellen)
@@ -83,6 +199,14 @@ namespace Business_Tier
             }
         }
 
+        #endregion
+
+
+        /// <summary>
+        /// Invoer van score en main algoritme van het programma
+        /// </summary>
+        /// <param name="score"></param>
+        /// <param name="naam"></param>
         public void ScoreInvoer(int score, string naam)
         {
             foreach (Spel s in spellen)
@@ -95,11 +219,17 @@ namespace Business_Tier
                         {
                             s.Scorep1 = s.Scorep1 - score;
                             GemiddeldePerLeg(naam, score);
+                            SaveScore(naam, score);
+
                             s.Count1 = s.Count1 + 3;
+
                         }
                         else if (s.Scorep1 == score)
                         {
                             s.Count1 = s.Count1 + 0; //pop-up geven waar gebruiker aantal darts in moet geven.
+                            SaveUitworp(naam, score); // checken of het de hoogste uitworp tot nu toe is.
+                            SaveGemiddelde(naam); // saved het gemiddelde.
+
                             foreach (Legs l in legs)
                             {
                                 if (l.Speler1 == naam)
@@ -117,12 +247,14 @@ namespace Business_Tier
 
                                                 if (set.SetsStand1 == set.SetsTotaal)
                                                 {
-                                                    // Einde spel.
+                                                    SaveEindstand();
+                                                    EindeSpel(naam); // Einde spel.
                                                 }
                                             }
                                             else
                                             {
-                                                // Einde spel.
+                                                SaveEindstand();
+                                                EindeSpel(naam); // Einde spel.
                                             }
                                         }
                                     }
@@ -150,10 +282,14 @@ namespace Business_Tier
                             s.Scorep2 = s.Scorep2 - score;
                             GemiddeldePerLeg(naam, score);
                             s.Count2 = s.Count2 + 3;
+                            SaveScore(naam, score);
                         }
                         else if (s.Scorep2 == score)
                         {
                             s.Count2 = s.Count2 + 0; //pop-up geven waar gebruiker aantal darts in moet geven.
+                            SaveUitworp(naam, score); // checken of het de hoogste uitworp tot nu toe is.
+                            SaveGemiddelde(naam); // saved het gemiddelde.
+
                             foreach (Legs l in legs)
                             {
                                 if (l.Speler2 == naam)
@@ -171,12 +307,14 @@ namespace Business_Tier
 
                                                 if (set.SetsStand1 == set.SetsTotaal)
                                                 {
-                                                    // Einde spel.
+                                                    SaveEindstand();
+                                                    EindeSpel(naam);// Einde spel.
                                                 }
                                             }
                                             else
                                             {
-                                                // Einde spel.
+                                                SaveEindstand();
+                                                EindeSpel(naam); // Einde spel.
                                             }
                                         }
                                     }
