@@ -12,11 +12,16 @@ namespace Business_Tier
 
         private int avgcounter1 = 2;
         private GemiddeldeBerekenen gb = new GemiddeldeBerekenen();
+        private List<Spel> spellen = new List<Spel>();
+        private List<Legs> legs = new List<Legs>();
+        private List<Sets> sets = new List<Sets>();
+        private List<Statistieken> statistieken = new List<Statistieken>();
 
-        public List<Spel> spellen = new List<Spel>();
-        public List<Legs> legs = new List<Legs>();
-        public List<Sets> sets = new List<Sets>();
-        public List<Statistieken> statistieken = new List<Statistieken>();
+        public List<Spel> Spellen { get { return spellen; } set { spellen = value; } }
+        public List<Legs> Legs { get { return legs; } set { legs = value; } }
+        public List<Sets> Sets { get { return sets; } set { sets = value; } }
+        public List<Statistieken> Statistieken { get { return statistieken; } set { statistieken = value; } }
+
         public bool NieuwSpel(string speler1, string speler2, int score, int legsTotaal, int setsTotaal, int botGmd)
         {
             Speler sp1 = new Speler(SpelerType.Gebruiker, speler1, score, 0, 0);
@@ -35,7 +40,7 @@ namespace Business_Tier
             Spel s2 = new Spel(sp2, score, botGmd);
             Legs l1 = new Legs(sp1, score, botGmd, 0, legsTotaal);
             Legs l2 = new Legs(sp2, score, botGmd, 0, legsTotaal);
-            Sets set1 = new Sets(sp1, score, botGmd, 0 , setsTotaal);
+            Sets set1 = new Sets(sp1, score, botGmd, 0, setsTotaal);
             Sets set2 = new Sets(sp2, score, botGmd, 0, setsTotaal);
             Statistieken stat1 = new Statistieken(speler1, "", 0, 0, 0, 0, 0, 0, 0, 0);
             Statistieken stat2 = new Statistieken(speler2, "", 0, 0, 0, 0, 0, 0, 0, 0);
@@ -210,16 +215,19 @@ namespace Business_Tier
             {
                 if (naam == s.Speler.Naam)
                 {
+                    if (s.Speler.SpelerType == SpelerType.Bot)
+                    {
+                        score = BotScore(naam);
+                    }
+
                     if (score <= 180)
                     {
                         if (s.Speler.Score > score)
                         {
                             s.Speler.Score = s.Speler.Score - score;
+                            s.Speler.Darts = s.Speler.Darts + 3;
                             GemiddeldePerLeg(naam, score);
                             SaveScore(naam, score);
-
-                            s.Speler.Darts = s.Speler.Darts + 3;
-
                         }
                         else if (s.Speler.Score == score)
                         {
@@ -272,8 +280,13 @@ namespace Business_Tier
             }
         }
 
+        #region Uitworp terug geven
 
-
+        /// <summary>
+        /// Uitworp berekenen
+        /// </summary>
+        /// <param name="naam"></param>
+        /// <returns></returns>
         public string UitworpTonen(string naam)
         {
             int score = 170;
@@ -806,9 +819,15 @@ namespace Business_Tier
                     }
                 }
             }
-             return uitworp;
+            return uitworp;
         }
 
+        #endregion
+
+
+        /// <summary>
+        /// Resetten van belangrijke waarden. (wordt gebruikt aan het einde van een leg)
+        /// </summary>
         public void Reset()
         {
             foreach (Spel s in spellen)
@@ -820,14 +839,19 @@ namespace Business_Tier
         }
         #endregion
 
-        public void BotniveauInstellen()
+        public int BotScore(string naam)
         {
-
-        }
-
-        public void BotScore()
-        {
-
+            int score = 0;
+            foreach(Spel s in spellen)
+            {
+                if (s.Speler.Naam == naam)
+                {
+                    Random rnd = new Random();
+                    score = rnd.Next(s.BotGmd - 15, s.BotGmd + 15);
+                    return score;
+                }
+            }
+            return score;
         }
     }
 

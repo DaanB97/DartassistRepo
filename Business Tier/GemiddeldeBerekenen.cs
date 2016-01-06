@@ -8,8 +8,6 @@ namespace Business_Tier
 {
     class GemiddeldeBerekenen
     {
-        private int score1;
-        private int counter1 = 2;
         public void BerekenGemiddelde()
         {
             
@@ -25,13 +23,10 @@ namespace Business_Tier
                     if (s.Speler.Gemiddelde == 0)
                     {
                         s.Speler.Gemiddelde = score;
-                        score1 = score;
                     }
                     else
                     {
-                        score1 = score1 + score;
-                        s.Speler.Gemiddelde = score1 / counter1;
-                        counter1++;
+                        s.Speler.Gemiddelde = (s.Startscore - s.Speler.Score) / (s.Speler.Darts / 3);
                     }
                 }
 

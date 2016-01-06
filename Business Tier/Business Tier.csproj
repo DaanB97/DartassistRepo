@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DartsPerLegBerekenen.cs" />
     <Compile Include="GemiddeldeBerekenen.cs" />
     <Compile Include="Legs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

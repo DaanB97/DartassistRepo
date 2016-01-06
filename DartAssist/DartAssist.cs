@@ -25,12 +25,12 @@ namespace DartAssist
         public void SpelStart()
         {
             string naam = "";
-            foreach (Spel s in spelController.spellen)
+            foreach (Spel s in spelController.Spellen)
             {
                 naam = s.Speler.Naam;
             }
 
-            foreach (Spel s in spelController.spellen)
+            foreach (Spel s in spelController.Spellen)
             {
                 if (s.Speler.Naam != " ")
                 {
@@ -50,7 +50,7 @@ namespace DartAssist
 
         public void UpdateStand()
         {
-            foreach (Legs s in spelController.legs)
+            foreach (Legs s in spelController.Legs)
             {
                 if (s.Speler.Naam == lblNaamP1.Text)
                 {
@@ -61,7 +61,7 @@ namespace DartAssist
                     lblLegs2.Text = Convert.ToString(s.Stand);
                 }
             }
-            foreach (Sets s in spelController.sets)
+            foreach (Sets s in spelController.Sets)
             {
                 if(s.Speler.Naam == lblNaamP1.Text)
                 {
@@ -90,11 +90,19 @@ namespace DartAssist
                 lblLaatsteScore1.Text = Convert.ToString(invoer1);
             }
 
+            //spelController.EindeSpel(); //laat een methode in spelcontroller controleren of het spel af is gelopen of niet.
             //if ( if =1)
             //{
             //    es.Show();
             //}
             UpdateStand();
+            foreach (Spel s in spelController.Spellen)
+            {
+                if (s.Speler.SpelerType == SpelerType.Bot)
+                {
+                    // run programma zodat bot gooid en speler1 is weer aan de beurt.
+                }
+            }
         }
 
         private void btnInvoer2_Click(object sender, EventArgs e)
@@ -119,7 +127,7 @@ namespace DartAssist
         {
             string naam1 = lblNaamP1.Text;
             string naam2 = lblNaamP2.Text;
-            foreach (Spel s in spelController.spellen)
+            foreach (Spel s in spelController.Spellen)
             {
                 if (s.Speler.Naam == naam1)
                 {
