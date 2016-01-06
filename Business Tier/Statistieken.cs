@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business_Tier
 {
-    class Statistieken
+    public class Statistieken
     {
         public string Speler { get; set; }
         public string Eindstand { get; set; }

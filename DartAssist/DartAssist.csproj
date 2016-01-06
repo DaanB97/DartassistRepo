@@ -50,6 +50,12 @@
     <Compile Include="DartAssist.Designer.cs">
       <DependentUpon>DartAssist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Eindstand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Eindstand.Designer.cs">
+      <DependentUpon>Eindstand.cs</DependentUpon>
+    </Compile>
     <Compile Include="Instellingen.cs">
       <SubType>Form</SubType>
     </Compile>

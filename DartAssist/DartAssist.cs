@@ -14,10 +14,12 @@ namespace DartAssist
     public partial class DartAssist : Form
     {
         private SpelController spelController;
+        private Eindstand es;
         public DartAssist()
         {
             InitializeComponent();
             spelController = new SpelController();
+            es = new Eindstand(spelController);
         }
 
         public void SpelStart()
@@ -31,7 +33,6 @@ namespace DartAssist
                     lblNaamP2.Text = s.Speler2.ToString();
                     lblScore1.Text = Convert.ToString(s.Scorep1);
                     lblScore2.Text = Convert.ToString(s.Scorep2);
-
                 }
             }
         }
@@ -56,11 +57,6 @@ namespace DartAssist
             }
         }
 
-        public void NieuwSpel(string speler1, string speler2, int score1, int score2, int startScore, int legsTotaal, int setsTotaal)
-        {
-            spelController.NieuwSpel(speler1, speler2, score1, score2, startScore, legsTotaal, setsTotaal);
-        }
-
         private void btnInvoer1_Click(object sender, EventArgs e)
         {
             if (tbInvoer1.Text == "")
@@ -76,6 +72,11 @@ namespace DartAssist
                 tbInvoer1.Text = "";
                 lblLaatsteScore1.Text = Convert.ToString(invoer1);
             }
+
+            //if ( if =1)
+            //{
+            //    es.Show();
+            //}
             UpdateStand();
         }
 

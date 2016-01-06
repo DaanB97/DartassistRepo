@@ -9,22 +9,32 @@ namespace Business_Tier
 {
     public class SpelController
     {
-        private int counter1 = 2;
-        private int counter2 = 2;
+
         private int avgcounter1 = 2;
         private int avgcounter2 = 2;
-        private int score1;
-        private int score2;
+        private GemiddeldeBerekenen gb = new GemiddeldeBerekenen();
 
         public List<Spel> spellen = new List<Spel>();
         public List<Legs> legs = new List<Legs>();
         public List<Sets> sets = new List<Sets>();
         public List<Statistieken> statistieken = new List<Statistieken>();
-        public bool NieuwSpel(string speler1, string speler2, int score1, int score2, int startScore, int legsTotaal, int setsTotaal)
+        public bool NieuwSpel(string speler1, string speler2, int score, int legsTotaal, int setsTotaal, int botGmd)
         {
-            Spel s = new Spel(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore);
-            Legs l = new Legs(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore, 0, 0, legsTotaal);
-            Sets set = new Sets(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore, 0, 0, setsTotaal);
+            Speler sp1 = new Speler(SpelerType.Gebruiker, speler1, score, 0, 0);
+            SpelerType st;
+            if (speler2 == "Bot")
+            {
+                st = SpelerType.Bot;
+            }
+            else
+            {
+                st = SpelerType.Gebruiker;
+            }
+
+            Speler sp2 = new Speler(st, speler2, score, 0, 0);
+            Spel s = new Spel(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore, botGmd);
+            Legs l = new Legs(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore, botGmd, 0, 0, legsTotaal);
+            Sets set = new Sets(speler1, speler2, score1, score2, 0, 0, 0, 0, startScore, botGmd, 0, 0, setsTotaal);
             Statistieken stat1 = new Statistieken(speler1, "", 0, 0, 0, 0, 0, 0, 0, 0);
             Statistieken stat2 = new Statistieken(speler2, "", 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -46,7 +56,7 @@ namespace Business_Tier
             }
 
             // Tonen dat speler "naam" heeft gewonnen
-            // Eindoverzicht geven
+            // Eindoverzicht geven (nieuw form openen?)
         }
         public void GeefEindOverzicht()
         {
@@ -188,39 +198,9 @@ namespace Business_Tier
         /// <param name="score"></param>
         public void GemiddeldePerLeg(string naam, int score)
         {
-            foreach (Spel s in spellen)
-            {
-
-                if (s.Speler1 == naam)
-                {
-                    if (s.Gmd1 == 0)
-                    {
-                        s.Gmd1 = score;
-                        score1 = score;
-                    }
-                    else
-                    {
-                        score1 = score1 + score;
-                        s.Gmd1 = score1 / counter1;
-                        counter1++;
-                    }
-                }
-                else if (s.Speler2 == naam)
-                {
-                    if (s.Gmd2 == 0)
-                    {
-                        s.Gmd2 = score;
-                        score2 = score;
-                    }
-                    else
-                    {
-                        score2 = score2 + score;
-                        s.Gmd2 = score2 / counter2;
-                        counter2++;
-                    }
-                }
-            }
+            gb.fghjk(naam, score, spellen);
         }
+
 
         #endregion
 
@@ -1425,10 +1405,10 @@ namespace Business_Tier
                 s.Gmd2 = 0;
                 s.Count1 = 0;
                 s.Count2 = 0;
-                counter1 = 2;
-                counter2 = 2;
-                score1 = 0;
-                score2 = 0;
+                //counter1 = 2;
+                //counter2 = 2;
+                //score1 = 0;
+                //score2 = 0;
             }
         }
         #endregion

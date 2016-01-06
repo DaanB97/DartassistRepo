@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Business_Tier
 {
-    public enum SpelerType {Gebruiker, Gast, Bot}
+    public enum SpelerType {Gebruiker, Bot}
 }

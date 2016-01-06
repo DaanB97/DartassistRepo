@@ -14,25 +14,41 @@ namespace DartAssist
     public partial class Instellingen : Form
     {
         private DartAssist dartAssist;
-        private int score1;
-        private int score2;
+        private SpelController sp;
 
         public Instellingen()
         {
             InitializeComponent();
             dartAssist = new DartAssist();
+            sp = new SpelController();
         }
 
         public int StartOpties()
         {
             string speler1 = tbSpeler1.Text;
             string speler2 = tbSpeler2.Text;
+            int botGmd = 0;
+
+            if (checkBox1.Checked)
+            {
+                speler2 = "Bot";
+                botGmd = Convert.ToInt32(nudBot.Value);
+            }
+
             int legsTotaal = Convert.ToInt32(nudLegs.Value);
             int setsTotaal = Convert.ToInt32(nudSets.Value);
             int i = CheckScores();
 
-            dartAssist.NieuwSpel(speler1,speler2,score1,score2,score1,legsTotaal, setsTotaal);
-            return i;
+            sp.NieuwSpel(speler1, speler2, i, legsTotaal, setsTotaal,botGmd);
+
+            if (i == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
         private void btnBeginSpel_Click(object sender, EventArgs e)
@@ -46,29 +62,26 @@ namespace DartAssist
 
         public int CheckScores()
         {
-            if(rb301P1.Checked)
+            int score;
+            if (rb301P1.Checked)
             {
-                score1 = 301;
-                score2 = 301;
-                return 1;
+                score = 301;
+                return score;
             }
-            else if(rb501P1.Checked)
+            else if (rb501P1.Checked)
             {
-                score1 = 501;
-                score2 = 501;
-                return 1;
+                score = 501;
+                return score;
             }
-            else if(rb501P1.Checked)
+            else if (rb501P1.Checked)
             {
-                score1 = 701;
-                score2 = 701;
-                return 1;
+                score = 701;
+                return score;
             }
-            else if(rbCostum.Checked)
+            else if (rbCostum.Checked)
             {
-                score1 = Convert.ToInt32(tbCostum.Text);
-                score2 = Convert.ToInt32(tbCostum.Text);
-                return 1;
+                score = Convert.ToInt32(tbCostum.Text);
+                return score;
             }
             else
             {

@@ -37,18 +37,23 @@
             this.rb501P1 = new System.Windows.Forms.RadioButton();
             this.rb701P1 = new System.Windows.Forms.RadioButton();
             this.gbSpelsoort = new System.Windows.Forms.GroupBox();
+            this.tbCostum = new System.Windows.Forms.TextBox();
+            this.rbCostum = new System.Windows.Forms.RadioButton();
             this.gbBot = new System.Windows.Forms.GroupBox();
             this.gbSpel = new System.Windows.Forms.GroupBox();
-            this.lblSpelLegs = new System.Windows.Forms.Label();
-            this.lblSpelSets = new System.Windows.Forms.Label();
-            this.nudLegs = new System.Windows.Forms.NumericUpDown();
             this.nudSets = new System.Windows.Forms.NumericUpDown();
-            this.rbCostum = new System.Windows.Forms.RadioButton();
-            this.tbCostum = new System.Windows.Forms.TextBox();
+            this.nudLegs = new System.Windows.Forms.NumericUpDown();
+            this.lblSpelSets = new System.Windows.Forms.Label();
+            this.lblSpelLegs = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.nudBot = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.gbSpelsoort.SuspendLayout();
+            this.gbBot.SuspendLayout();
             this.gbSpel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLegs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSets)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLegs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBot)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -144,8 +149,29 @@
             this.gbSpelsoort.TabStop = false;
             this.gbSpelsoort.Text = "Spelsoort";
             // 
+            // tbCostum
+            // 
+            this.tbCostum.Location = new System.Drawing.Point(6, 107);
+            this.tbCostum.Name = "tbCostum";
+            this.tbCostum.Size = new System.Drawing.Size(100, 20);
+            this.tbCostum.TabIndex = 9;
+            // 
+            // rbCostum
+            // 
+            this.rbCostum.AutoSize = true;
+            this.rbCostum.Location = new System.Drawing.Point(6, 88);
+            this.rbCostum.Name = "rbCostum";
+            this.rbCostum.Size = new System.Drawing.Size(60, 17);
+            this.rbCostum.TabIndex = 8;
+            this.rbCostum.TabStop = true;
+            this.rbCostum.Text = "Costum";
+            this.rbCostum.UseVisualStyleBackColor = true;
+            // 
             // gbBot
             // 
+            this.gbBot.Controls.Add(this.label3);
+            this.gbBot.Controls.Add(this.nudBot);
+            this.gbBot.Controls.Add(this.checkBox1);
             this.gbBot.Location = new System.Drawing.Point(199, 83);
             this.gbBot.Name = "gbBot";
             this.gbBot.Size = new System.Drawing.Size(200, 133);
@@ -166,14 +192,19 @@
             this.gbSpel.TabStop = false;
             this.gbSpel.Text = "Spel";
             // 
-            // lblSpelLegs
+            // nudSets
             // 
-            this.lblSpelLegs.AutoSize = true;
-            this.lblSpelLegs.Location = new System.Drawing.Point(6, 20);
-            this.lblSpelLegs.Name = "lblSpelLegs";
-            this.lblSpelLegs.Size = new System.Drawing.Size(36, 13);
-            this.lblSpelLegs.TabIndex = 0;
-            this.lblSpelLegs.Text = "Legs :";
+            this.nudSets.Location = new System.Drawing.Point(220, 18);
+            this.nudSets.Name = "nudSets";
+            this.nudSets.Size = new System.Drawing.Size(98, 20);
+            this.nudSets.TabIndex = 3;
+            // 
+            // nudLegs
+            // 
+            this.nudLegs.Location = new System.Drawing.Point(48, 18);
+            this.nudLegs.Name = "nudLegs";
+            this.nudLegs.Size = new System.Drawing.Size(98, 20);
+            this.nudLegs.TabIndex = 2;
             // 
             // lblSpelSets
             // 
@@ -184,37 +215,40 @@
             this.lblSpelSets.TabIndex = 1;
             this.lblSpelSets.Text = "Sets :";
             // 
-            // nudLegs
+            // lblSpelLegs
             // 
-            this.nudLegs.Location = new System.Drawing.Point(48, 18);
-            this.nudLegs.Name = "nudLegs";
-            this.nudLegs.Size = new System.Drawing.Size(98, 20);
-            this.nudLegs.TabIndex = 2;
+            this.lblSpelLegs.AutoSize = true;
+            this.lblSpelLegs.Location = new System.Drawing.Point(6, 20);
+            this.lblSpelLegs.Name = "lblSpelLegs";
+            this.lblSpelLegs.Size = new System.Drawing.Size(36, 13);
+            this.lblSpelLegs.TabIndex = 0;
+            this.lblSpelLegs.Text = "Legs :";
             // 
-            // nudSets
+            // checkBox1
             // 
-            this.nudSets.Location = new System.Drawing.Point(220, 18);
-            this.nudSets.Name = "nudSets";
-            this.nudSets.Size = new System.Drawing.Size(98, 20);
-            this.nudSets.TabIndex = 3;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(7, 20);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(42, 17);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Bot";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // rbCostum
+            // nudBot
             // 
-            this.rbCostum.AutoSize = true;
-            this.rbCostum.Location = new System.Drawing.Point(6, 88);
-            this.rbCostum.Name = "rbCostum";
-            this.rbCostum.Size = new System.Drawing.Size(60, 17);
-            this.rbCostum.TabIndex = 8;
-            this.rbCostum.TabStop = true;
-            this.rbCostum.Text = "Costum";
-            this.rbCostum.UseVisualStyleBackColor = true;
+            this.nudBot.Location = new System.Drawing.Point(7, 62);
+            this.nudBot.Name = "nudBot";
+            this.nudBot.Size = new System.Drawing.Size(120, 20);
+            this.nudBot.TabIndex = 1;
             // 
-            // tbCostum
+            // label3
             // 
-            this.tbCostum.Location = new System.Drawing.Point(6, 107);
-            this.tbCostum.Name = "tbCostum";
-            this.tbCostum.Size = new System.Drawing.Size(100, 20);
-            this.tbCostum.TabIndex = 9;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Bot gemiddelde :";
             // 
             // Instellingen
             // 
@@ -233,10 +267,13 @@
             this.Text = "Instellingen";
             this.gbSpelsoort.ResumeLayout(false);
             this.gbSpelsoort.PerformLayout();
+            this.gbBot.ResumeLayout(false);
+            this.gbBot.PerformLayout();
             this.gbSpel.ResumeLayout(false);
             this.gbSpel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLegs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSets)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLegs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,5 +298,8 @@
         private System.Windows.Forms.NumericUpDown nudLegs;
         private System.Windows.Forms.Label lblSpelSets;
         private System.Windows.Forms.Label lblSpelLegs;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown nudBot;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
