@@ -8,6 +8,9 @@ namespace Business_Tier
 {
     public class Statistieken
     {
+        private int oudescorep1 = 0;
+        private int oudescorep2 = 0;
+
         public string Speler { get; set; }
         public string Eindstand { get; set; }
         public int HoogsteScore { get; set; }
@@ -96,6 +99,14 @@ namespace Business_Tier
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="naam"></param>
+        /// <param name="spellen"></param>
+        /// <param name="stats"></param>
+        /// <param name="legs"></param>
+        /// <param name="sets"></param>
         public void SaveGemiddelde(string naam, List<Spel> spellen, List<Statistieken> stats, List<Legs> legs, List<Sets> sets)
         {
             foreach (Spel s in spellen)
@@ -110,14 +121,10 @@ namespace Business_Tier
                             {
                                 stat.Gemiddelde = s.Speler1.Gemiddelde;
                             }
-                            else if (s.Speler1.Legs == 0 && s.Speler1.Sets == 0 && s.Speler2.Legs == 0 && s.Speler2.Sets == 0)
+                            else 
                             {
-                                stat.Gemiddelde = (s.Startscore - s.Speler1.Score) / s.Speler1.TurnCount;
-                            }
-                            else // WAT TE DOEN BIJ LEG 1<???
-                            {
-                                // klopt niet want je doet 2 gemiddeldes bij elkaar optellen!!
-                                stat.Gemiddelde = (stat.Gemiddelde + s.Speler1.Gemiddelde) / s.Speler1.TurnCount;
+                                stat.Gemiddelde = (stat.Gemiddelde + (oudescorep1 - s.Speler1.Score)) / s.Speler1.TurnCount;
+                                oudescorep1 = s.Speler1.Score;
                             }
                         }
                     }
@@ -132,14 +139,10 @@ namespace Business_Tier
                             {
                                 stat.Gemiddelde = s.Speler2.Gemiddelde;
                             }
-                            else if (s.Speler1.Legs == 0 && s.Speler1.Sets == 0 && s.Speler2.Legs == 0 && s.Speler2.Sets == 0)
+                            else
                             {
-                                stat.Gemiddelde = (s.Startscore - s.Speler2.Score) / s.Speler2.TurnCount;
-                            }
-                            else // WAT TE DOEN BIJ LEG 1<???
-                            {
-                                // klopt niet want je doet 2 gemiddeldes bij elkaar optellen!!
-                                stat.Gemiddelde = (stat.Gemiddelde + (s.Startscore - s.Speler2.Score)) / s.Speler2.TurnCount;
+                                stat.Gemiddelde = (stat.Gemiddelde + (oudescorep2 - s.Speler2.Score)) / s.Speler2.TurnCount;
+                                oudescorep2 = s.Speler2.Score;
                             }
                         }
                     }
