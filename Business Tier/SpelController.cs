@@ -236,11 +236,13 @@ namespace Business_Tier
                         else
                         {
                             //melding geven, kapot gegooid.
+                            throw new CostumException("Kapot gegooid!");
                         }
                     }
                     else
                     {
                         //melding geven 180 is max
+                        throw new CostumException("180 is de maximale score!");
                     }
                 }
                 else if (naam == s.Speler2.Naam)
@@ -303,11 +305,13 @@ namespace Business_Tier
                         else
                         {
                             //melding geven, kapot gegooid.
+                            throw new CostumException("Kapot gegooid!");
                         }
                     }
                     else
                     {
                         //melding geven 180 is max
+                        throw new CostumException("180 is de maximale score!");
                     }
                 }
 

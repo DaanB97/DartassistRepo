@@ -60,7 +60,16 @@ namespace DartAssist
             {
                 string naam1 = lblNaamP1.Text;
                 int invoer1 = Convert.ToInt32(tbInvoer1.Text);
-                spelController.ScoreInvoer(invoer1, naam1);
+
+                try
+                {
+                    spelController.ScoreInvoer(invoer1, naam1);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    SwitchTurn();
+                }
                 FillLabels();
                 tbInvoer1.Text = "";
             }
@@ -81,7 +90,15 @@ namespace DartAssist
             {
                 string naam2 = lblNaamP2.Text;
                 int invoer2 = Convert.ToInt32(tbInvoer2.Text);
-                spelController.ScoreInvoer(invoer2, naam2);
+                try
+                {
+                    spelController.ScoreInvoer(invoer2, naam2);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    SwitchTurn();
+                }
                 FillLabels();
                 tbInvoer2.Text = "";
             }
@@ -99,7 +116,16 @@ namespace DartAssist
             {
                 if (s.Speler2.SpelerType == SpelerType.Bot)
                 {
-                    spelController.ScoreInvoer(0, lblNaamP2.Text);
+                    try
+                    {
+                        spelController.ScoreInvoer(0, lblNaamP2.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        SwitchTurn();
+                    }
+
                     FillLabels();
                     UpdateStand();
                     SwitchTurn();
