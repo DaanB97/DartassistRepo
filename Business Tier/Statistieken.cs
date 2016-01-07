@@ -139,7 +139,7 @@ namespace Business_Tier
                             else // WAT TE DOEN BIJ LEG 1<???
                             {
                                 // klopt niet want je doet 2 gemiddeldes bij elkaar optellen!!
-                                stat.Gemiddelde = (stat.Gemiddelde + s.Speler2.Gemiddelde) / s.Speler2.TurnCount;
+                                stat.Gemiddelde = (stat.Gemiddelde + (s.Startscore - s.Speler2.Score)) / s.Speler2.TurnCount;
                             }
                         }
                     }
