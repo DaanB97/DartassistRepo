@@ -32,7 +32,7 @@ namespace Business_Tier
                     }
                     else
                     {
-                        s.Speler1.Gemiddelde = (s.Startscore - s.Speler1.Score) / (s.Speler1.Darts / 3);
+                        s.Speler1.Gemiddelde = (s.Startscore - s.Speler1.Score) / s.Speler1.TurnCount;
                     }
                 }
                 if (s.Speler2.Naam == naam)
@@ -43,7 +43,7 @@ namespace Business_Tier
                     }
                     else
                     {
-                        s.Speler2.Gemiddelde = (s.Startscore - s.Speler2.Score) / (s.Speler2.Darts / 3);
+                        s.Speler2.Gemiddelde = (s.Startscore - s.Speler2.Score) / s.Speler2.TurnCount;
                     }
                 }
 

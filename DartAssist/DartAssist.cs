@@ -53,21 +53,8 @@ namespace DartAssist
             }
             else
             {
-                try
-                {
-                    spelController.ScoreInvoer(invoer, naam);
-                    FillLabels();
-                    tbInvoer1.Text = "";
-                    UpdateStand();
-                    SwitchTurn();
-                    CheckEindeSpel();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                ScoreInvoer(invoer, naam);
             }
-
             BotTurn();
         }
 
@@ -82,24 +69,9 @@ namespace DartAssist
             }
             else
             {
-                try
-                {
-                    spelController.ScoreInvoer(invoer, naam);
-                    FillLabels();
-                    tbInvoer2.Text = "";
-                    UpdateStand();
-                    SwitchTurn();
-                    CheckEindeSpel();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
+                ScoreInvoer(invoer, naam);
             }
         }
-
-        #endregion
 
         #region Bot
         public void BotTurn()
@@ -108,21 +80,32 @@ namespace DartAssist
             {
                 if (s.Speler2.SpelerType == SpelerType.Bot)
                 {
-                    try
-                    {
-                        spelController.ScoreInvoer(0, lblNaamP2.Text);
-                        FillLabels();
-                        UpdateStand();
-                        SwitchTurn();
-                        CheckEindeSpel();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    ScoreInvoer(0, lblNaamP2.Text);
                 }
             }
         }
+        #endregion
+
+        public void ScoreInvoer(int invoer, string naam)
+        {
+            try
+            {
+                spelController.ScoreInvoer(invoer, naam);
+                FillLabels();
+                tbInvoer2.Text = "";
+                tbInvoer1.Text = "";
+                UpdateStand();
+                SwitchTurn();
+                CheckEindeSpel();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+
         #endregion
 
         #region Updates

@@ -26,6 +26,7 @@ namespace Business_Tier
 
         /// <summary>
         /// Systeem maakt nieuw spel aan aan de hand van de gegevens die de gebruiker heeft meegegeven.
+        /// Indien er een bot is ingesteld wordt het spelerstype hieraan aangepast.
         /// </summary>
         /// <param name="speler1"></param>
         /// <param name="speler2"></param>
