@@ -110,7 +110,11 @@ namespace Business_Tier
                             {
                                 stat.Gemiddelde = s.Speler1.Gemiddelde;
                             }
-                            else 
+                            else if (s.Speler1.Legs == 0 && s.Speler1.Sets == 0 && s.Speler2.Legs == 0 && s.Speler2.Sets == 0)
+                            {
+                                stat.Gemiddelde = (s.Startscore - s.Speler1.Score) / s.Speler1.TurnCount;
+                            }
+                            else // WAT TE DOEN BIJ LEG 1<???
                             {
                                 // klopt niet want je doet 2 gemiddeldes bij elkaar optellen!!
                                 stat.Gemiddelde = (stat.Gemiddelde + s.Speler1.Gemiddelde) / s.Speler1.TurnCount;
@@ -128,8 +132,13 @@ namespace Business_Tier
                             {
                                 stat.Gemiddelde = s.Speler2.Gemiddelde;
                             }
-                            else
+                            else if (s.Speler1.Legs == 0 && s.Speler1.Sets == 0 && s.Speler2.Legs == 0 && s.Speler2.Sets == 0)
                             {
+                                stat.Gemiddelde = (s.Startscore - s.Speler2.Score) / s.Speler2.TurnCount;
+                            }
+                            else // WAT TE DOEN BIJ LEG 1<???
+                            {
+                                // klopt niet want je doet 2 gemiddeldes bij elkaar optellen!!
                                 stat.Gemiddelde = (stat.Gemiddelde + s.Speler2.Gemiddelde) / s.Speler2.TurnCount;
                             }
                         }
