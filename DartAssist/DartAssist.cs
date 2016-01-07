@@ -44,18 +44,18 @@ namespace DartAssist
 
         private void btnInvoer1_Click(object sender, EventArgs e)
         {
+            string naam = lblNaamP1.Text;
+            int invoer = Convert.ToInt32(tbInvoer1.Text);
+
             if (tbInvoer1.Text == "")
             {
                 MessageBox.Show("Voer score in");
             }
             else
             {
-                string naam1 = lblNaamP1.Text;
-                int invoer1 = Convert.ToInt32(tbInvoer1.Text);
-
                 try
                 {
-                    spelController.ScoreInvoer(invoer1, naam1);
+                    spelController.ScoreInvoer(invoer, naam);
                     FillLabels();
                     tbInvoer1.Text = "";
                     UpdateStand();
@@ -73,17 +73,18 @@ namespace DartAssist
 
         private void btnInvoer2_Click(object sender, EventArgs e)
         {
+            string naam = lblNaamP2.Text;
+            int invoer = Convert.ToInt32(tbInvoer2.Text);
+
             if (tbInvoer2.Text == "")
             {
                 MessageBox.Show("Voer score in");
             }
             else
             {
-                string naam2 = lblNaamP2.Text;
-                int invoer2 = Convert.ToInt32(tbInvoer2.Text);
                 try
                 {
-                    spelController.ScoreInvoer(invoer2, naam2);
+                    spelController.ScoreInvoer(invoer, naam);
                     FillLabels();
                     tbInvoer2.Text = "";
                     UpdateStand();

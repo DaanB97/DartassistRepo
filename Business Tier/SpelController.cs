@@ -204,6 +204,7 @@ namespace Business_Tier
                         {
                             s.Speler1.Darts = s.Speler1.Darts + 3; //pop-up geven waar gebruiker aantal darts in moet geven.
                             s.Speler1.TurnCount++; // Speler heeft een beurt gehad dus teller telt op voor het berekenen van statistieken.
+                            GemiddeldePerLeg(naam, score);
                             SaveUitworp(naam, score); // checken of het de hoogste uitworp tot nu toe is.
                             SaveGemiddelde(naam); // saved het gemiddelde.
                             SaveDartsPerLeg(naam); // saved het aantal darts dat per leg wordt gebruikt
@@ -278,6 +279,7 @@ namespace Business_Tier
                         {
                             s.Speler2.Darts = s.Speler2.Darts + 3; //pop-up geven waar gebruiker aantal darts in moet geven.
                             s.Speler2.TurnCount++; // Speler heeft een beurt gehad dus teller telt op voor het berekenen van statistieken.
+                            GemiddeldePerLeg(naam, score);
                             SaveUitworp(naam, score); // checken of het de hoogste uitworp tot nu toe is.
                             SaveGemiddelde(naam); // saved het gemiddelde.
                             SaveDartsPerLeg(naam); // saved het aantal darts dat per leg wordt gebruikt
