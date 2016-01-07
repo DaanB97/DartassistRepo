@@ -34,7 +34,26 @@ namespace DartAssist
             }
             foreach (Statistieken stat in spelController.Statistieken)
             {
-                lblEindstand.Text = stat.Eindstand;
+                foreach (Spel s in spelController.Spellen)
+                {
+                    if (s.Speler1.Naam == stat.Speler)
+                    {
+                        if (s.Einde == true)
+                        {
+                            lblEindstand.Text = stat.Eindstand.ToString();
+                        }
+                    }
+                    else if (s.Speler2.Naam == stat.Speler)
+                    {
+                        if (s.Einde == true)
+                        {
+                            lblEindstand.Text = stat.Eindstand.ToString();
+                        }
+
+                    }
+
+                }
+
                 if (stat.Speler == speler1)
                 {
                     lblGmdP1.Text = Convert.ToString(stat.Gemiddelde);

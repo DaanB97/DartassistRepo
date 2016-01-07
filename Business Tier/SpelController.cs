@@ -36,7 +36,8 @@ namespace Business_Tier
         /// <returns></returns>
         public bool NieuwSpel(string speler1, string speler2, int score, int legsTotaal, int setsTotaal, int botGmd)
         {
-            Speler sp1 = new Speler(SpelerType.Gebruiker, speler1, score, 0, 0);
+            Speler sp1 = new Speler(SpelerType.Gebruiker, speler1, score, 0, 0, 0,0,0);
+
             SpelerType st;
             if (speler2 == "Bot")
             {
@@ -46,19 +47,19 @@ namespace Business_Tier
             {
                 st = SpelerType.Gebruiker;
             }
+            Speler sp2 = new Speler(st, speler2, score, 0, 0, 0,0,0);
 
-            Speler sp2 = new Speler(st, speler2, score, 0, 0);
-            Spel s1 = new Spel(sp1, sp2, score, botGmd, 0, false);
-            Legs l1 = new Legs(sp1, sp2, score, botGmd, 0, false, 0, legsTotaal);
-            Sets set1 = new Sets(sp1, sp2, score, botGmd, 0, false, 0, setsTotaal);
+            Spel spel = new Spel(sp1, sp2, score, botGmd, false);
+            Legs leg = new Legs(sp1, sp2, score, botGmd, false, legsTotaal);
+            Sets set = new Sets(sp1, sp2, score, botGmd, false, setsTotaal);
             Statistieken stat1 = new Statistieken(speler1, "", 0, 0, 0, 0, 0, 0, 0, 0);
             Statistieken stat2 = new Statistieken(speler2, "", 0, 0, 0, 0, 0, 0, 0, 0);
 
             statistieken.Add(stat1);
             statistieken.Add(stat2);
-            spellen.Add(s1);
-            legs.Add(l1);
-            sets.Add(set1);
+            spellen.Add(spel);
+            legs.Add(leg);
+            sets.Add(set);
             return true;
         }
         #endregion
@@ -131,7 +132,7 @@ namespace Business_Tier
         /// <param name="naam"></param>
         public void SaveGemiddelde(string naam)
         {
-            st.SaveGemiddelde(naam, spellen, statistieken);
+            st.SaveGemiddelde(naam, spellen, statistieken, legs, sets);
         }
 
         /// <summary>
@@ -141,7 +142,7 @@ namespace Business_Tier
         /// <returns></returns>
         public string SaveEindstand(int check)
         {
-            return st.SaveEindstand(check, spellen, sets, legs);
+            return st.SaveEindstand(check, spellen);
         }
 
         /// <summary>
@@ -193,22 +194,24 @@ namespace Business_Tier
                         {
                             s.Speler1.Score = s.Speler1.Score - score;
                             s.Speler1.Darts = s.Speler1.Darts + 3;
+                            s.Speler1.TurnCount++; // Speler heeft een beurt gehad dus teller telt op voor het berekenen van statistieken.
                             GemiddeldePerLeg(naam, score);
-                            SaveScore(naam, score);
+                            SaveGemiddelde(naam); // saved het gemiddelde.
+                            SaveDartsPerLeg(naam); // saved het aantal darts dat per leg wordt gebruikt
+                            SaveScore(naam, score); // saved scores
                         }
                         else if (s.Speler1.Score == score)
                         {
                             s.Speler1.Darts = s.Speler1.Darts + 3; //pop-up geven waar gebruiker aantal darts in moet geven.
+                            s.Speler1.TurnCount++; // Speler heeft een beurt gehad dus teller telt op voor het berekenen van statistieken.
                             SaveUitworp(naam, score); // checken of het de hoogste uitworp tot nu toe is.
-                            SaveGemiddelde(naam); // saved het gemiddelde.
-                            SaveDartsPerLeg(naam); // saved het aantal darts dat per leg wordt gebruikt
 
                             foreach (Legs l in legs)
                             {
                                 if (l.Speler1.Naam == naam)
                                 {
-                                    l.Stand = l.Stand + 1; // Leg is gewonnen wanneer score gelijk is aan worp.
-                                    if (l.Stand == l.LegsTotaal)
+                                    s.Speler1.Legs = s.Speler1.Legs + 1; // Leg is gewonnen wanneer score gelijk is aan worp.
+                                    if (s.Speler1.Legs == l.LegsTotaal)
                                     {
                                         Reset(); //Alle spelgegevens terug zetten naar orrigineel.
 
@@ -216,9 +219,9 @@ namespace Business_Tier
                                         {
                                             if (set.SetsTotaal != 0)
                                             {
-                                                set.SetsStand = set.SetsStand + 1; // Set is gewonnen
+                                                s.Speler1.Sets = s.Speler1.Sets + 1; // Set is gewonnen
 
-                                                if (set.SetsStand == set.SetsTotaal)
+                                                if (s.Speler1.Sets == set.SetsTotaal)
                                                 {
                                                     EindeSpel(1); // Einde spel.
                                                 }
@@ -262,22 +265,25 @@ namespace Business_Tier
                         {
                             s.Speler2.Score = s.Speler2.Score - score;
                             s.Speler2.Darts = s.Speler2.Darts + 3;
+                            s.Speler2.TurnCount++; // Speler heeft een beurt gehad dus teller telt op voor het berekenen van statistieken.
                             GemiddeldePerLeg(naam, score);
-                            SaveScore(naam, score);
+                            SaveGemiddelde(naam); // saved het gemiddelde.
+                            SaveDartsPerLeg(naam); // saved het aantal darts dat per leg wordt gebruikt
+                            SaveScore(naam, score); // saved scores
                         }
                         else if (s.Speler2.Score == score)
                         {
                             s.Speler2.Darts = s.Speler2.Darts + 3; //pop-up geven waar gebruiker aantal darts in moet geven.
+                            s.Speler2.TurnCount++; // Speler heeft een beurt gehad dus teller telt op voor het berekenen van statistieken.
                             SaveUitworp(naam, score); // checken of het de hoogste uitworp tot nu toe is.
-                            SaveGemiddelde(naam); // saved het gemiddelde.
-                            SaveDartsPerLeg(naam); // saved het aantal darts dat per leg wordt gebruikt
+                            
 
                             foreach (Legs l in legs)
                             {
                                 if (l.Speler2.Naam == naam)
                                 {
-                                    l.Stand = l.Stand + 1; // Leg is gewonnen wanneer score gelijk is aan worp.
-                                    if (l.Stand == l.LegsTotaal)
+                                    s.Speler2.Legs = s.Speler2.Legs + 1; // Leg is gewonnen wanneer score gelijk is aan worp.
+                                    if (s.Speler2.Legs == l.LegsTotaal)
                                     {
                                         Reset(); //Alle spelgegevens terug zetten naar orrigineel.
 
@@ -285,9 +291,9 @@ namespace Business_Tier
                                         {
                                             if (set.SetsTotaal != 0)
                                             {
-                                                set.SetsStand = set.SetsStand + 1; // Set is gewonnen
+                                                s.Speler2.Sets = s.Speler2.Sets + 1; // Set is gewonnen
 
-                                                if (set.SetsStand == set.SetsTotaal)
+                                                if (s.Speler2.Sets == set.SetsTotaal)
                                                 {
                                                     EindeSpel(1); // Einde spel.
                                                 }

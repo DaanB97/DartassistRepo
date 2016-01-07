@@ -96,7 +96,7 @@ namespace Business_Tier
             }
         }
 
-        public void SaveGemiddelde(string naam, List<Spel> spellen, List<Statistieken> stats)
+        public void SaveGemiddelde(string naam, List<Spel> spellen, List<Statistieken> stats, List<Legs> legs, List<Sets> sets)
         {
             foreach (Spel s in spellen)
             {
@@ -110,9 +110,10 @@ namespace Business_Tier
                             {
                                 stat.Gemiddelde = s.Speler1.Gemiddelde;
                             }
-                            else
+                            else 
                             {
-                                stat.Gemiddelde = s.Speler1.Gemiddelde / s.LegCount;
+                                // klopt niet want je doet 2 gemiddeldes bij elkaar optellen!!
+                                stat.Gemiddelde = (stat.Gemiddelde + s.Speler1.Gemiddelde) / s.Speler1.TurnCount;
                             }
                         }
                     }
@@ -129,7 +130,7 @@ namespace Business_Tier
                             }
                             else
                             {
-                                stat.Gemiddelde = s.Speler2.Gemiddelde / s.LegCount;
+                                stat.Gemiddelde = (stat.Gemiddelde + s.Speler2.Gemiddelde) / s.Speler2.TurnCount;
                             }
                         }
                     }
@@ -142,48 +143,20 @@ namespace Business_Tier
         /// </summary>
         /// <param name="check"></param>
         /// <returns></returns>
-        public string SaveEindstand(int check, List<Spel> spellen, List<Sets> sets, List<Legs> legs)
+        public string SaveEindstand(int check, List<Spel> spellen)
         {
-            int p1score = 0;
-            int p2score = 0;
-
-            if (check == 1)
-            {
                 foreach (Spel s in spellen)
                 {
-                    foreach (Sets set in sets)
+                    if (check == 1)
                     {
-                        if (s.Speler1.Naam == set.Speler1.Naam)
-                        {
-                            p1score = set.SetsStand;
-                        }
-                        else if (s.Speler2.Naam == set.Speler2.Naam)
-                        {
-                            p2score = set.SetsStand;
-                        }
+                        return s.Speler1.Sets + " - " +  s.Speler2.Sets;
+                    }
+                    if (check == 0)
+                    {
+                        return s.Speler1.Legs + " - " + s.Speler2.Legs;
                     }
                 }
-                return p1score + " - " + p2score;
-            }
-            else if (check == 0)
-            {
-                foreach (Spel s in spellen)
-                {
-                    foreach (Legs l in legs)
-                    {
-                        if (s.Speler1.Naam == l.Speler1.Naam)
-                        {
-                            p1score = l.Stand;
-                        }
-                        else if (s.Speler2.Naam == l.Speler2.Naam)
-                        {
-                            p2score = l.Stand;
-                        }
-                    }
-                }
-                return p1score + " - " + p2score;
-            }
-            return null;
+                return null;
         }
 
         /// <summary>
@@ -192,12 +165,6 @@ namespace Business_Tier
         /// <param name="naam"></param>
         public void SaveDartsPerLeg(string naam, List<Spel> spellen, List<Statistieken> stats)
         {
-            // Dit zou je als counter kunnen gebruiken maar zodra er met sets wordt gespeeld doet dit het niet meer
-            //int counter = 0;
-            //foreach (Legs l in legs)
-            //{
-            //    counter = counter + l.Stand;
-            //}
             foreach (Spel s in spellen)
             {
                 if (s.Speler1.Naam == naam)
@@ -212,7 +179,7 @@ namespace Business_Tier
                             }
                             else
                             {
-                                stat.DartsPerLeg = s.Speler1.Darts / s.LegCount;
+                                stat.DartsPerLeg = (stat.DartsPerLeg + s.Speler1.Darts) / s.Speler1.TurnCount;
                             }
                         }
                     }
@@ -229,7 +196,7 @@ namespace Business_Tier
                             }
                             else
                             {
-                                stat.DartsPerLeg = s.Speler2.Darts / s.LegCount;
+                                stat.DartsPerLeg = (stat.DartsPerLeg + s.Speler2.Darts) / s.Speler2.TurnCount;
                             }
                         }
                     }

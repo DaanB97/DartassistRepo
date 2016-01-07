@@ -27,22 +27,14 @@ namespace DartAssist
         #region Spel initialiseren
         public void SpelStart()
         {
-            string naam1 = "";
-            string naam2 = "";
-            foreach (Spel s in spelController.Spellen)
-            {
-                naam1 = s.Speler1.Naam;
-                naam2 = s.Speler2.Naam;
-            }
-
             foreach (Spel s in spelController.Spellen)
             {
                 if (s.Speler1.Naam != " ")
                 {
-                    lblNaamP2.Text = s.Speler2.Naam.ToString();
-                    lblScore2.Text = Convert.ToString(s.Speler2.Score);
                     lblNaamP1.Text = s.Speler1.Naam.ToString();
                     lblScore1.Text = Convert.ToString(s.Speler1.Score);
+                    lblNaamP2.Text = s.Speler2.Naam.ToString();
+                    lblScore2.Text = Convert.ToString(s.Speler2.Score);
                 }
             }
         }
@@ -64,18 +56,17 @@ namespace DartAssist
                 try
                 {
                     spelController.ScoreInvoer(invoer1, naam1);
+                    FillLabels();
+                    tbInvoer1.Text = "";
+                    UpdateStand();
+                    SwitchTurn();
+                    CheckEindeSpel();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    SwitchTurn();
                 }
-                FillLabels();
-                tbInvoer1.Text = "";
             }
-            UpdateStand();
-            SwitchTurn();
-            CheckEindeSpel();
 
             BotTurn();
         }
@@ -93,18 +84,18 @@ namespace DartAssist
                 try
                 {
                     spelController.ScoreInvoer(invoer2, naam2);
+                    FillLabels();
+                    tbInvoer2.Text = "";
+                    UpdateStand();
+                    SwitchTurn();
+                    CheckEindeSpel();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    SwitchTurn();
                 }
-                FillLabels();
-                tbInvoer2.Text = "";
+
             }
-            UpdateStand();
-            SwitchTurn();
-            CheckEindeSpel();
         }
 
         #endregion
@@ -119,17 +110,15 @@ namespace DartAssist
                     try
                     {
                         spelController.ScoreInvoer(0, lblNaamP2.Text);
+                        FillLabels();
+                        UpdateStand();
+                        SwitchTurn();
+                        CheckEindeSpel();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
-                        SwitchTurn();
                     }
-
-                    FillLabels();
-                    UpdateStand();
-                    SwitchTurn();
-                    CheckEindeSpel();
                 }
             }
         }
@@ -175,27 +164,12 @@ namespace DartAssist
         /// </summary>
         public void UpdateStand()
         {
-            foreach (Legs s in spelController.Legs)
+            foreach (Spel s in spelController.Spellen)
             {
-                if (s.Speler1.Naam == lblNaamP1.Text)
-                {
-                    lblLegs1.Text = Convert.ToString(s.Stand);
-                }
-                else if (s.Speler2.Naam == lblNaamP2.Text)
-                {
-                    lblLegs2.Text = Convert.ToString(s.Stand);
-                }
-            }
-            foreach (Sets s in spelController.Sets)
-            {
-                if (s.Speler1.Naam == lblNaamP1.Text)
-                {
-                    lblSetsStand1.Text = Convert.ToString(s.SetsStand);
-                }
-                else if (s.Speler2.Naam == lblNaamP2.Text)
-                {
-                    lblSetsStand2.Text = Convert.ToString(s.SetsStand);
-                }
+                lblLegs1.Text = Convert.ToString(s.Speler1.Legs);
+                lblSetsStand1.Text = Convert.ToString(s.Speler1.Sets);
+                lblLegs2.Text = Convert.ToString(s.Speler2.Legs);
+                lblSetsStand2.Text = Convert.ToString(s.Speler2.Sets);
             }
         }
 

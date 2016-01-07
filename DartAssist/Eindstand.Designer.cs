@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.gbSpeler1 = new System.Windows.Forms.GroupBox();
-            this.lblDpLP2 = new System.Windows.Forms.Label();
+            this.lblDpLP1 = new System.Windows.Forms.Label();
             this.lblHsP1 = new System.Windows.Forms.Label();
             this.lblHfP1 = new System.Windows.Forms.Label();
             this.lbl60P1 = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblDpLP2 = new System.Windows.Forms.Label();
             this.gbSpeler2 = new System.Windows.Forms.GroupBox();
             this.lbl180P2 = new System.Windows.Forms.Label();
             this.lbl140P2 = new System.Windows.Forms.Label();
@@ -62,7 +63,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblEindstand = new System.Windows.Forms.Label();
-            this.lblDpLP1 = new System.Windows.Forms.Label();
             this.gbSpeler1.SuspendLayout();
             this.gbSpeler2.SuspendLayout();
             this.SuspendLayout();
@@ -93,15 +93,15 @@
             this.gbSpeler1.TabStop = false;
             this.gbSpeler1.Text = "groupBox1";
             // 
-            // lblDpLP2
+            // lblDpLP1
             // 
-            this.lblDpLP2.AutoSize = true;
-            this.lblDpLP2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDpLP2.Location = new System.Drawing.Point(189, 189);
-            this.lblDpLP2.Name = "lblDpLP2";
-            this.lblDpLP2.Size = new System.Drawing.Size(68, 22);
-            this.lblDpLP2.TabIndex = 15;
-            this.lblDpLP2.Text = "label24";
+            this.lblDpLP1.AutoSize = true;
+            this.lblDpLP1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDpLP1.Location = new System.Drawing.Point(174, 189);
+            this.lblDpLP1.Name = "lblDpLP1";
+            this.lblDpLP1.Size = new System.Drawing.Size(68, 22);
+            this.lblDpLP1.TabIndex = 15;
+            this.lblDpLP1.Text = "label32";
             // 
             // lblHsP1
             // 
@@ -252,6 +252,16 @@
             this.label1.Size = new System.Drawing.Size(116, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Gemiddelde :";
+            // 
+            // lblDpLP2
+            // 
+            this.lblDpLP2.AutoSize = true;
+            this.lblDpLP2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDpLP2.Location = new System.Drawing.Point(189, 189);
+            this.lblDpLP2.Name = "lblDpLP2";
+            this.lblDpLP2.Size = new System.Drawing.Size(68, 22);
+            this.lblDpLP2.TabIndex = 15;
+            this.lblDpLP2.Text = "label24";
             // 
             // gbSpeler2
             // 
@@ -437,17 +447,7 @@
             this.lblEindstand.Name = "lblEindstand";
             this.lblEindstand.Size = new System.Drawing.Size(67, 31);
             this.lblEindstand.TabIndex = 2;
-            this.lblEindstand.Text = "1 - 1";
-            // 
-            // lblDpLP1
-            // 
-            this.lblDpLP1.AutoSize = true;
-            this.lblDpLP1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDpLP1.Location = new System.Drawing.Point(174, 189);
-            this.lblDpLP1.Name = "lblDpLP1";
-            this.lblDpLP1.Size = new System.Drawing.Size(68, 22);
-            this.lblDpLP1.TabIndex = 15;
-            this.lblDpLP1.Text = "label32";
+            this.lblEindstand.Text = "0 - 0";
             // 
             // Eindstand
             // 
