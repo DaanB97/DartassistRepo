@@ -132,7 +132,7 @@ namespace Business_Tier
         /// <param name="naam"></param>
         public void SaveGemiddelde(string naam)
         {
-            st.SaveGemiddelde(naam, spellen, statistieken, legs, sets);
+            st.SaveGemiddelde(naam, spellen, statistieken);
         }
 
         /// <summary>

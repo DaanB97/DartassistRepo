@@ -100,14 +100,12 @@ namespace Business_Tier
         }
 
         /// <summary>
-        /// 
+        /// Slaat het gemiddelde op in de lijst van statistieken.
         /// </summary>
         /// <param name="naam"></param>
         /// <param name="spellen"></param>
         /// <param name="stats"></param>
-        /// <param name="legs"></param>
-        /// <param name="sets"></param>
-        public void SaveGemiddelde(string naam, List<Spel> spellen, List<Statistieken> stats, List<Legs> legs, List<Sets> sets)
+        public void SaveGemiddelde(string naam, List<Spel> spellen, List<Statistieken> stats)
         {
             foreach (Spel s in spellen)
             {
