@@ -1416,10 +1416,12 @@ namespace Business_Tier
                 s.Speler1.Score = s.Startscore;
                 s.Speler1.Gemiddelde = 0;
                 s.Speler1.Darts = 0;
+                s.Speler1.Legs = 0;
 
                 s.Speler2.Score = s.Startscore;
                 s.Speler2.Gemiddelde = 0;
                 s.Speler2.Darts = 0;
+                s.Speler2.Legs = 0;
             }
         }
         #endregion

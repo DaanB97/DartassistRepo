@@ -97,10 +97,10 @@
             // lblScore1
             // 
             this.lblScore1.AutoSize = true;
-            this.lblScore1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore1.Location = new System.Drawing.Point(99, 40);
+            this.lblScore1.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore1.Location = new System.Drawing.Point(62, 16);
             this.lblScore1.Name = "lblScore1";
-            this.lblScore1.Size = new System.Drawing.Size(52, 29);
+            this.lblScore1.Size = new System.Drawing.Size(101, 54);
             this.lblScore1.TabIndex = 2;
             this.lblScore1.Text = "501";
             // 
@@ -154,10 +154,10 @@
             // lblScore2
             // 
             this.lblScore2.AutoSize = true;
-            this.lblScore2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore2.Location = new System.Drawing.Point(105, 46);
+            this.lblScore2.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore2.Location = new System.Drawing.Point(103, 16);
             this.lblScore2.Name = "lblScore2";
-            this.lblScore2.Size = new System.Drawing.Size(52, 29);
+            this.lblScore2.Size = new System.Drawing.Size(101, 54);
             this.lblScore2.TabIndex = 0;
             this.lblScore2.Text = "501";
             // 

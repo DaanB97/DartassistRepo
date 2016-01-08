@@ -133,6 +133,8 @@ namespace DartAssist
                 btnInvoer2.Enabled = true;
                 lblTurn1.Visible = false;
                 lblTurn2.Visible = true;
+                tbInvoer1.Enabled = false;
+                tbInvoer2.Enabled = true;
             }
             else if (btnInvoer2.Enabled == true)
             {
@@ -140,6 +142,8 @@ namespace DartAssist
                 btnInvoer2.Enabled = false;
                 lblTurn1.Visible = true;
                 lblTurn2.Visible = false;
+                tbInvoer1.Enabled = true;
+                tbInvoer2.Enabled = false;
             }
         }
 
